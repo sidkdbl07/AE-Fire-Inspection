@@ -1,0 +1,421 @@
+<template name="firealarmpaneltest">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Fire Alarm Panel / Control Unit Test</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="faptlocation" id="faptlocation" value="{{getValue 'faptlocation'}}" />
+        </div>
+        FA Panel/Control unit location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="faptidentification" id="faptidentification" value="{{getValue 'faptidentification'}}" />
+        </div>
+        FA Panel/Control unit identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptpoweron_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptpoweron" id="faptpoweron_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptpoweron_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptpoweron" id="faptpoweron_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptpoweron_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptpoweron" id="faptpoweron_N/A"> N/A
+          </label>
+        </div>
+        A: Power ‘ON’ visual indicator operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptsignaloperates_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsignaloperates" id="faptsignaloperates_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptsignaloperates_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsignaloperates" id="faptsignaloperates_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptsignaloperates_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsignaloperates" id="faptsignaloperates_N/A"> N/A
+          </label>
+        </div>
+        B: Common <u>visual</u> trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptaudibleoperates_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptaudibleoperates" id="faptaudibleoperates_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptaudibleoperates_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptaudibleoperates" id="faptaudibleoperates_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptaudibleoperates_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptaudibleoperates" id="faptaudibleoperates_N/A"> N/A
+          </label>
+        </div>
+        C: Common <u>audible</u> trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapttroublesignalsilence_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapttroublesignalsilence" id="fapttroublesignalsilence_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapttroublesignalsilence_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapttroublesignalsilence" id="fapttroublesignalsilence_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapttroublesignalsilence_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapttroublesignalsilence" id="fapttroublesignalsilence_N/A"> N/A
+          </label>
+        </div>
+        D: Trouble signal silence switch operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptpowersupplyfailure_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptpowersupplyfailure" id="faptpowersupplyfailure_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptpowersupplyfailure_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptpowersupplyfailure" id="faptpowersupplyfailure_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptpowersupplyfailure_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptpowersupplyfailure" id="faptpowersupplyfailure_N/A"> N/A
+          </label>
+        </div>
+        E: Main power supply failure trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptfaultposnegtrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptfaultposnegtrouble" id="faptfaultposnegtrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptfaultposnegtrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptfaultposnegtrouble" id="faptfaultposnegtrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptfaultposnegtrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptfaultposnegtrouble" id="faptfaultposnegtrouble_N/A"> N/A
+          </label>
+        </div>
+        F: Ground fault tested on positive and negative initiates trouble signal
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptalertsignal_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalertsignal" id="faptalertsignal_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptalertsignal_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalertsignal" id="faptalertsignal_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptalertsignal_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalertsignal" id="faptalertsignal_N/A"> N/A
+          </label>
+        </div>
+        G: Alert signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptalarmsignal_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsignal" id="faptalarmsignal_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmsignal_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsignal" id="faptalarmsignal_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmsignal_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsignal" id="faptalarmsignal_N/A"> N/A
+          </label>
+        </div>
+        H: Alarm signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptautomatictransfer_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptautomatictransfer" id="faptautomatictransfer_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptautomatictransfer_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptautomatictransfer" id="faptautomatictransfer_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptautomatictransfer_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptautomatictransfer" id="faptautomatictransfer_N/A"> N/A
+          </label>
+        </div>
+        I: Automatic transfer from alert signal to alarm signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptmanualtransfer_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptmanualtransfer" id="faptmanualtransfer_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptmanualtransfer_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptmanualtransfer" id="faptmanualtransfer_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptmanualtransfer_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptmanualtransfer" id="faptmanualtransfer_N/A"> N/A
+          </label>
+        </div>
+        J: Manual transfer from alert signal to alarm signal operates
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptautomatictransfertwostage_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptautomatictransfertwostage" id="faptautomatictransfertwostage_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptautomatictransfertwostage_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptautomatictransfertwostage" id="faptautomatictransfertwostage_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptautomatictransfertwostage_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptautomatictransfertwostage" id="faptautomatictransfertwostage_N/A"> N/A
+          </label>
+        </div>
+        K: Automatic transfer from alert signal to alarm signal cancel (acknowledge) feature operates on a two-stage system.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptalarmsignalsilence_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsignalsilence" id="faptalarmsignalsilence_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmsignalsilence_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsignalsilence" id="faptalarmsignalsilence_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmsignalsilence_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsignalsilence" id="faptalarmsignalsilence_N/A"> N/A
+          </label>
+        </div>
+        L: Alarm signal silence inhibit function operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptalarmmanualsilence_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmmanualsilence" id="faptalarmmanualsilence_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmmanualsilence_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmmanualsilence" id="faptalarmmanualsilence_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmmanualsilence_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmmanualsilence" id="faptalarmmanualsilence_N/A"> N/A
+          </label>
+        </div>
+        M: Alarm signal manual silence operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptalarmsilencevisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsilencevisual" id="faptalarmsilencevisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmsilencevisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsilencevisual" id="faptalarmsilencevisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptalarmsilencevisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptalarmsilencevisual" id="faptalarmsilencevisual_N/A"> N/A
+          </label>
+        </div>
+        N: Alarm signal silence visual indication operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptsilencereinitiates_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsilencereinitiates" id="faptsilencereinitiates_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptsilencereinitiates_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsilencereinitiates" id="faptsilencereinitiates_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptsilencereinitiates_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsilencereinitiates" id="faptsilencereinitiates_N/A"> N/A
+          </label>
+        </div>
+        O: Alarm signal, when silenced, automatically reinitiates upon subsequent alarm.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="faptalarmcutouttimer" id="faptalarmcutouttimer" value="{{getValue 'faptalarmcutouttimer'}}" />
+        </div>
+        P: Alarm signal silence automatic cut-out timer.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptappendixe_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptappendixe" id="faptappendixe_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptappendixe_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptappendixe" id="faptappendixe_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptappendixe_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptappendixe" id="faptappendixe_N/A"> N/A
+          </label>
+        </div>
+        Q: Audible and visual alert signals and alarm signals programmed and operate per design and specification; or documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptinputcircuitaudiblevisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptinputcircuitaudiblevisual" id="faptinputcircuitaudiblevisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptinputcircuitaudiblevisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptinputcircuitaudiblevisual" id="faptinputcircuitaudiblevisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptinputcircuitaudiblevisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptinputcircuitaudiblevisual" id="faptinputcircuitaudiblevisual_N/A"> N/A
+          </label>
+        </div>
+        R: Input circuit, alarm and supervisory operation, including audible and visual indication operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptcircuitsupervisionfault_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitsupervisionfault" id="faptcircuitsupervisionfault_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptcircuitsupervisionfault_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitsupervisionfault" id="faptcircuitsupervisionfault_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptcircuitsupervisionfault_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitsupervisionfault" id="faptcircuitsupervisionfault_N/A"> N/A
+          </label>
+        </div>
+        S: Input circuit supervision fault causes a trouble indication.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptcircuitalarmindic_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitalarmindic" id="faptcircuitalarmindic_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptcircuitalarmindic_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitalarmindic" id="faptcircuitalarmindic_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptcircuitalarmindic_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitalarmindic" id="faptcircuitalarmindic_N/A"> N/A
+          </label>
+        </div>
+        T: Output circuit alarm indicators operate.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptcircuitsupervisiontroubleindic_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitsupervisiontroubleindic" id="faptcircuitsupervisiontroubleindic_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptcircuitsupervisiontroubleindic_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitsupervisiontroubleindic" id="faptcircuitsupervisiontroubleindic_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptcircuitsupervisiontroubleindic_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcircuitsupervisiontroubleindic" id="faptcircuitsupervisiontroubleindic_N/A"> N/A
+          </label>
+        </div>
+        U: Output circuit supervision fault causes a trouble indication
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptlampstest_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptlampstest" id="faptlampstest_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptlampstest_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptlampstest" id="faptlampstest_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptlampstest_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptlampstest" id="faptlampstest_N/A"> N/A
+          </label>
+        </div>
+        V: Visual indicator test (lamp test).
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptcodedsignalalarmsignal_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcodedsignalalarmsignal" id="faptcodedsignalalarmsignal_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptcodedsignalalarmsignal_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcodedsignalalarmsignal" id="faptcodedsignalalarmsignal_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptcodedsignalalarmsignal_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcodedsignalalarmsignal" id="faptcodedsignalalarmsignal_N/A"> N/A
+          </label>
+        </div>
+        W: Coded signal sequences operate not less than the required number of times and the correct alarm signal operates thereafter.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptcodedsequenceinteruppted_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcodedsequenceinteruppted" id="faptcodedsequenceinteruppted_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptcodedsequenceinteruppted_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcodedsequenceinteruppted" id="faptcodedsequenceinteruppted_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptcodedsequenceinteruppted_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptcodedsequenceinteruppted" id="faptcodedsequenceinteruppted_N/A"> N/A
+          </label>
+        </div>
+        X: Coded signal sequences are not interrupted by subsequent alarms
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptancillarybypasstrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptancillarybypasstrouble" id="faptancillarybypasstrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptancillarybypasstrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptancillarybypasstrouble" id="faptancillarybypasstrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptancillarybypasstrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptancillarybypasstrouble" id="faptancillarybypasstrouble_N/A"> N/A
+          </label>
+        </div>
+        Y: Ancillary device by-pass will result in a trouble signal.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptinpitcircuittooutput_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptinpitcircuittooutput" id="faptinpitcircuittooutput_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptinpitcircuittooutput_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptinpitcircuittooutput" id="faptinpitcircuittooutput_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptinpitcircuittooutput_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptinpitcircuittooutput" id="faptinpitcircuittooutput_N/A"> N/A
+          </label>
+        </div>
+        Z: Input circuit to output circuit operation, including ancillary device circuits, for correct program operation, as per design and specification, or documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptrsystemreset_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptrsystemreset" id="faptrsystemreset_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptrsystemreset_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptrsystemreset" id="faptrsystemreset_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptrsystemreset_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptrsystemreset" id="faptrsystemreset_N/A"> N/A
+          </label>
+        </div>
+        AA: Fire alarm system reset operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptemergepowertrnasfer_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptemergepowertrnasfer" id="faptemergepowertrnasfer_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptemergepowertrnasfer_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptemergepowertrnasfer" id="faptemergepowertrnasfer_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptemergepowertrnasfer_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptemergepowertrnasfer" id="faptemergepowertrnasfer_N/A"> N/A
+          </label>
+        </div>
+        BB: Main power supply to emergency power supply transfer operates
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'faptsmokedetector_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsmokedetector" id="faptsmokedetector_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'faptsmokedetector_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsmokedetector" id="faptsmokedetector_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'faptsmokedetector_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="faptsmokedetector" id="faptsmokedetector_N/A"> N/A
+          </label>
+        </div>
+        CC: Smoke detector alarm verification (status change confirmation) verified. [Refer Subsection 6.7.4.3, Smoke Detector Alarm Verification (Status Change Confirmation)].
+      </div>
+    </div>
+  </div>
+</template>

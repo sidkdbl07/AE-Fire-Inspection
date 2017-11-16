@@ -1,0 +1,230 @@
+<template name="annunciatorsequential">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Annunciator or Sequential Display</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="asdlocation" id="asdlocation" value="{{getValue 'asdlocation'}}" />
+        </div>
+        Annunciator or sequential display location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="asdidentification" id="asdidentification" value="{{getValue 'asdidentification'}}" />
+        </div>
+        Annunciator or sequential display identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdpoweron_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdpoweron" id="asdpoweron_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdpoweron_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdpoweron" id="asdpoweron_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdpoweron_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdpoweron" id="asdpoweron_N/A"> N/A
+          </label>
+        </div>
+        A:  Power ‘on’ indicator operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdindiv_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdindiv" id="asdindiv_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdindiv_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdindiv" id="asdindiv_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdindiv_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdindiv" id="asdindiv_N/A"> N/A
+          </label>
+        </div>
+        B: Individual alarm and supervisory zone indication operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdexception_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdexception" id="asdexception_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdexception_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdexception" id="asdexception_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdexception_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdexception" id="asdexception_N/A"> N/A
+          </label>
+        </div>
+        Exception: Operation of each individual alarm and supervisory zone
+        indication gives the identical indication, or lights the identical
+        indicators at the other annunciator(s) and sequential display(s).
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="asdmethodofconfirmation" id="asdmethodofconfirmation" value="{{getValue 'asdmethodofconfirmation'}}" />
+        </div>
+        Specify Method of confirmation:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdminimumonealarmzone_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdminimumonealarmzone" id="asdminimumonealarmzone_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdminimumonealarmzone_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdminimumonealarmzone" id="asdminimumonealarmzone_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdminimumonealarmzone_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdminimumonealarmzone" id="asdminimumonealarmzone_N/A"> N/A
+          </label>
+        </div>
+        Minimum of one alarm zone and one supervisory zone tested per annunciator or sequential display to confirm operation.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdindivdesignationlabels_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdindivdesignationlabels" id="asdindivdesignationlabels_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdindivdesignationlabels_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdindivdesignationlabels" id="asdindivdesignationlabels_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdindivdesignationlabels_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdindivdesignationlabels" id="asdindivdesignationlabels_N/A"> N/A
+          </label>
+        </div>
+        C: Individual alarm and supervisory zone designation labels are properly identified.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdactivesupportingfield_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdactivesupportingfield" id="asdactivesupportingfield_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdactivesupportingfield_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdactivesupportingfield" id="asdactivesupportingfield_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdactivesupportingfield_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdactivesupportingfield" id="asdactivesupportingfield_N/A"> N/A
+          </label>
+        </div>
+        D: Where active and supporting field devices are utilized, device labels shall be confirmed to correspond with actual field location.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdcommentrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdcommentrouble" id="asdcommentrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdcommentrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdcommentrouble" id="asdcommentrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdcommentrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdcommentrouble" id="asdcommentrouble_N/A"> N/A
+          </label>
+        </div>
+        E: Common trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdlamptest_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdlamptest" id="asdlamptest_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdlamptest_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdlamptest" id="asdlamptest_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdlamptest_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdlamptest" id="asdlamptest_N/A"> N/A
+          </label>
+        </div>
+        F: Visual indicator test (lamp test) operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdinputwiring_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdinputwiring" id="asdinputwiring_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdinputwiring_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdinputwiring" id="asdinputwiring_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdinputwiring_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdinputwiring" id="asdinputwiring_N/A"> N/A
+          </label>
+        </div>
+        G: Input wiring from control unit or transponder is supervised.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdsignalsilencevisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdsignalsilencevisual" id="asdsignalsilencevisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdsignalsilencevisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdsignalsilencevisual" id="asdsignalsilencevisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdsignalsilencevisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdsignalsilencevisual" id="asdsignalsilencevisual_N/A"> N/A
+          </label>
+        </div>
+        H: Alarm signal silence visual indicator operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdswitches_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdswitches" id="asdswitches_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdswitches_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdswitches" id="asdswitches_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdswitches_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdswitches" id="asdswitches_N/A"> N/A
+          </label>
+        </div>
+        I: Switches for ancillary functions operate as per design and
+        specification, or in accordance with documentation as detailed in
+        Appendix E, Description of Fire Alarm System for Inspection and Test
+        Procedures.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdancillaryvisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdancillaryvisual" id="asdancillaryvisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdancillaryvisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdancillaryvisual" id="asdancillaryvisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdancillaryvisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdancillaryvisual" id="asdancillaryvisual_N/A"> N/A
+          </label>
+        </div>
+        J: Ancillary function visual indicators operate.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asdmanualactivationalarm_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdmanualactivationalarm" id="asdmanualactivationalarm_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asdmanualactivationalarm_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdmanualactivationalarm" id="asdmanualactivationalarm_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asdmanualactivationalarm_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asdmanualactivationalarm" id="asdmanualactivationalarm_N/A"> N/A
+          </label>
+        </div>
+        K: Manual activation of alarm signal and indication operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'asddisplaysvisible_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asddisplaysvisible" id="asddisplaysvisible_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'asddisplaysvisible_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asddisplaysvisible" id="asddisplaysvisible_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'asddisplaysvisible_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="asddisplaysvisible" id="asddisplaysvisible_N/A"> N/A
+          </label>
+        </div>
+        L: Displays are visible in installed location.
+      </div>
+    </div>
+  </div>
+</template>

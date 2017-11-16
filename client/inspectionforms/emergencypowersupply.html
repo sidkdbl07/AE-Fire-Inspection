@@ -1,0 +1,320 @@
+<template name="emergencypowersupply">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Emergency Power Supply Test and Inspection</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="epslocation" id="epslocation" value="{{getValue 'epslocation'}}" />
+        </div>
+        FA Panel/Control unit location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="epsidentification" id="epsidentification" value="{{getValue 'epsidentification'}}" />
+        </div>
+        FA Panel/Control unit identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epscorrectbatery_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epscorrectbatery" id="epscorrectbatery_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epscorrectbatery_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epscorrectbatery" id="epscorrectbatery_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epscorrectbatery_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epscorrectbatery" id="epscorrectbatery_N/A"> N/A
+          </label>
+        </div>
+        A:  Correct battery type as recommended by manufacturer.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsbatteryrating_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsbatteryrating" id="epsbatteryrating_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsbatteryrating_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsbatteryrating" id="epsbatteryrating_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsbatteryrating_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsbatteryrating" id="epsbatteryrating_N/A"> N/A
+          </label>
+        </div>
+        B: Correct battery rating as determined by battery calculations based on full system load.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsbatteryvoltagepoweron" id="epsbatteryvoltagepoweron" value="{{getValue 'epsbatteryvoltagepoweron'}}" /> V dc
+        </div>
+        C: Battery voltage with main power supply ‘ON’.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsbatteryvoltagepoweroffsuper" id="epsbatteryvoltagepoweroffsuper" value="{{getValue 'epsbatteryvoltagepoweroffsuper'}}" /> V dc
+        </div>
+        D: Battery voltage and current with main power supply ‘OFF’ and fire alarm system in supervisory condition.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsbatterycurrentpoweroffsuper" id="epsbatterycurrentpoweroffsuper" value="{{getValue 'epsbatterycurrentpoweroffsuper'}}" /> A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        &nbsp;
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsbatteryvoltagepowerofffull" id="epsbatteryvoltagepowerofffull" value="{{getValue 'epsbatteryvoltagepowerofffull'}}" /> V dc
+        </div>
+        E: Battery voltage and current with main power supply ‘OFF’ and fire alarm system in full load alarm condition.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsbatterycurrentpowerofffull" id="epsbatterycurrentpowerofffull" value="{{getValue 'epsbatterycurrentpowerofffull'}}" /> A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        &nbsp;
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epschargingcurrentfull" id="epschargingcurrentfull" value="{{getValue 'epschargingcurrentfull'}}" /> A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        F: Charging current on a fully charged battery.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsphysicaldamage_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsphysicaldamage" id="epsphysicaldamage_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsphysicaldamage_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsphysicaldamage" id="epsphysicaldamage_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsphysicaldamage_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsphysicaldamage" id="epsphysicaldamage_N/A"> N/A
+          </label>
+        </div>
+        G: Free of Physical damage.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsterminalslub_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsterminalslub" id="epsterminalslub_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsterminalslub_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsterminalslub" id="epsterminalslub_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsterminalslub_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsterminalslub" id="epsterminalslub_N/A"> N/A
+          </label>
+        </div>
+        H: Terminals cleaned and lubricated.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsterminalsclamped_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsterminalsclamped" id="epsterminalsclamped_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsterminalsclamped_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsterminalsclamped" id="epsterminalsclamped_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsterminalsclamped_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsterminalsclamped" id="epsterminalsclamped_N/A"> N/A
+          </label>
+        </div>
+        I: Terminals clamped tightly.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epselectrolyte_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epselectrolyte" id="epselectrolyte_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epselectrolyte_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epselectrolyte" id="epselectrolyte_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epselectrolyte_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epselectrolyte" id="epselectrolyte_N/A"> N/A
+          </label>
+        </div>
+        J: Correct electrolyte level.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsspecificgravity_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsspecificgravity" id="epsspecificgravity_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsspecificgravity_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsspecificgravity" id="epsspecificgravity_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsspecificgravity_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsspecificgravity" id="epsspecificgravity_N/A"> N/A
+          </label>
+        </div>
+        K: Specific gravity of electrolyte is within manufacturer’s specifications.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epselectrolyteleakage_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epselectrolyteleakage" id="epselectrolyteleakage_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epselectrolyteleakage_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epselectrolyteleakage" id="epselectrolyteleakage_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epselectrolyteleakage_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epselectrolyteleakage" id="epselectrolyteleakage_N/A"> N/A
+          </label>
+        </div>
+        L: Free of Electrolyte leakage.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsventilation_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsventilation" id="epsventilation_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsventilation_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsventilation" id="epsventilation_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsventilation_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsventilation" id="epsventilation_N/A"> N/A
+          </label>
+        </div>
+        M: Adequate ventilation.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsinservicedate" id="epsinservicedate" value="{{getValue 'epsinservicedate'}}" />
+        </div>
+        N: Battery manufacturer’s date code or in-service date.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsdisconnectiontrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsdisconnectiontrouble" id="epsdisconnectiontrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsdisconnectiontrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsdisconnectiontrouble" id="epsdisconnectiontrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsdisconnectiontrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsdisconnectiontrouble" id="epsdisconnectiontrouble_N/A"> N/A
+          </label>
+        </div>
+        O: Disconnection causes trouble signal
+      </div>
+      <div class="question-text">
+        P: Indicate type of battery tests performed:<br/>
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epssupervisory24h_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epssupervisory24h" id="epssupervisory24h_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epssupervisory24h_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epssupervisory24h" id="epssupervisory24h_No"> No
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(i) Required supervisory load for 24 h followed by the required full load operation; or
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epssilenttest_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epssilenttest" id="epssilenttest_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epssilenttest_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epssilenttest" id="epssilenttest_No"> No
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(ii) A silent test by using the load resistor method may be used for
+        the full duration test (Refer to Appendix F1, Silent Test); or
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epssilentacceltest_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epssilentacceltest" id="epssilentacceltest_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epssilentacceltest_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epssilentacceltest" id="epssilentacceltest_No"> No
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(iii) Silent accelerated test. (Refer to Appendix F2, Silent Accelerated Test); or
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epscapcity_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epscapcity" id="epscapcity_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epscapcity_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epscapcity" id="epscapcity_No"> No
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(iv) A battery capacity meter test. (Refer to Appendix F3, Battery Capacity Meter Test); or
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epslieu_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epslieu" id="epslieu_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epslieu_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epslieu" id="epslieu_No"> No
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(v) In lieu of the above battery tests, replace the battery with a new
+        set having a current date code, amp-hour capacity, and of a type as
+        recommended by the manufacturer of the fire alarm system.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epsbatterycap" id="epsbatterycap" value="{{getValue 'epsbatterycap'}}" /> A h&nbsp;&nbsp;
+        </div>
+        Q: Record calculated battery capacity (Refer to Appendix F4.1-C).
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 100px;" name="epstermvoltage" id="epstermvoltage" value="{{getValue 'epstermvoltage'}}" /> V dc
+        </div>
+        R: Record battery terminal voltage after completion of tests.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'eps85less_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="eps85less" id="eps85less_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'eps85less_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="eps85less" id="eps85less_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'eps85less_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="eps85less" id="eps85less_N/A"> N/A
+          </label>
+        </div>
+        S: Battery voltage not less than 85% of its rating after the tests
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epsgenerator_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsgenerator" id="epsgenerator_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epsgenerator_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsgenerator" id="epsgenerator_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epsgenerator_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epsgenerator" id="epsgenerator_N/A"> N/A
+          </label>
+        </div>
+        T: Generator provides power to the AC circuit serving the fire alarm system.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'epstroublegenerator_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epstroublegenerator" id="epstroublegenerator_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'epstroublegenerator_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epstroublegenerator" id="epstroublegenerator_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'epstroublegenerator_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="epstroublegenerator" id="epstroublegenerator_N/A"> N/A
+          </label>
+        </div>
+        U: Trouble condition at the emergency generator shall result in an
+        audible common trouble signal and a visual indication at the required
+        annunciator.
+      </div>
+    </div>
+  </div>
+</template>

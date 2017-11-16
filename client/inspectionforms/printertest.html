@@ -1,0 +1,67 @@
+<template name="printertest">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Printer Test</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="ptlocation" id="ptlocation" value="{{getValue 'ptlocation'}}" />
+        </div>
+        Printer location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="ptidentification" id="ptidentification" value="{{getValue 'ptidentification'}}" />
+        </div>
+        Printer identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ptoperatesperdesign_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptoperatesperdesign" id="ptoperatesperdesign_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ptoperatesperdesign_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptoperatesperdesign" id="ptoperatesperdesign_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ptoperatesperdesign_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptoperatesperdesign" id="ptoperatesperdesign_N/A"> N/A
+          </label>
+        </div>
+        A: Operates as per design and specification, or in accordance with
+        documentation as detailed in Appendix E, Description of Fire Alarm
+        System for Inspection and Test Procedures.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ptzonealarminit_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptzonealarminit" id="ptzonealarminit_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ptzonealarminit_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptzonealarminit" id="ptzonealarminit_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ptzonealarminit_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptzonealarminit" id="ptzonealarminit_N/A"> N/A
+          </label>
+        </div>
+        B: Zone of each alarm initiating device is correctly printed.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ptratedvoltage_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptratedvoltage" id="ptratedvoltage_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ptratedvoltage_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptratedvoltage" id="ptratedvoltage_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ptratedvoltage_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ptratedvoltage" id="ptratedvoltage_N/A"> N/A
+          </label>
+        </div>
+        C: Rated voltage is present.
+      </div>
+    </div>
+  </div>
+</template>

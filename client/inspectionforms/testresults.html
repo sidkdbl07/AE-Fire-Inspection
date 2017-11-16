@@ -1,0 +1,109 @@
+<template name="testresults">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Test Results</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'generalalarmconditions_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="generalalarmconditions" id="generalalarmconditions_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'generalalarmconditions_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="generalalarmconditions" id="generalalarmconditions_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'generalalarmconditions_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="generalalarmconditions" id="generalalarmconditions_N/A"> N/A
+          </label>
+        </div>
+        The fire alarm system functioned properly under general alarm conditions.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'acpoweroff_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="acpoweroff" id="acpoweroff_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'acpoweroff_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="acpoweroff" id="acpoweroff_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'acpoweroff_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="acpoweroff" id="acpoweroff_N/A"> N/A
+          </label>
+        </div>
+        All manual alarm initiating devices operating with main A.C. power off, locations listed in report?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'firealarmcorrect_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="firealarmcorrect" id="firealarmcorrect_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'firealarmcorrect_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="firealarmcorrect" id="firealarmcorrect_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'firealarmcorrect_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="firealarmcorrect" id="firealarmcorrect_N/A"> N/A
+          </label>
+        </div>
+        The fire alarm system functioned correctly during the above test.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'manualalarminitiation_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="manualalarminitiation" id="manualalarminitiation_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'manualalarminitiation_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="manualalarminitiation" id="manualalarminitiation_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'manualalarminitiation_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="manualalarminitiation" id="manualalarminitiation_N/A"> N/A
+          </label>
+        </div>
+        Each manual alarm initiating device has been tested and detail provided?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'automaticalarminitiation_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="automaticalarminitiation" id="automaticalarminitiation_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'automaticalarminitiation_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="automaticalarminitiation" id="automaticalarminitiation_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'automaticalarminitiation_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="automaticalarminitiation" id="automaticalarminitiation_N/A"> N/A
+          </label>
+        </div>
+        Each automatic alarm initiating device has been tested and details provided?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'audiblevisualsignaling_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="audiblevisualsignaling" id="audiblevisualsignaling_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'audiblevisualsignaling_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="audiblevisualsignaling" id="audiblevisualsignaling_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'audiblevisualsignaling_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="audiblevisualsignaling" id="audiblevisualsignaling_N/A"> N/A
+          </label>
+        </div>
+        Each audible and visual signaling device has been tested and details provided?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'correctannunciationconfirmed_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="correctannunciationconfirmed" id="correctannunciationconfirmed_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'correctannunciationconfirmed_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="correctannunciationconfirmed" id="correctannunciationconfirmed_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'correctannunciationconfirmed_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="correctannunciationconfirmed" id="correctannunciationconfirmed_N/A"> N/A
+          </label>
+        </div>
+        Correct Annunciation has been confirmed for each device tested?
+      </div>
+    </div>
+  </div>
+</template>

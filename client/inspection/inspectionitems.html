@@ -1,0 +1,129 @@
+<template name="inspectionitems">
+  <div id="content" class="content">
+    {{> header}}
+    <div class="inspection-observations">
+      <div class="inspection-control"><i class="fa fa-lg fa-comment"></i> <span class="badge">{{numberOfComments}}</span></div>
+      <div class="inspection-control"><i class="fa fa-lg fa-flag"></i> <span class="badge">{{numberOfDeficiencies}}</span></div>
+      <div class="inspection-control"><i class="fa fa-lg fa-sticky-note"></i> <span class="badge">{{numberOfRecommendations}}</span></div>
+    </div>
+    <div class="page-content">
+      <a href="/inspection/{{inspection._id}}{{backroute}}"><i class="fa fa-arrow-left"></i> Back to Inspection</a><br/>
+      {{#if subsReady 'inspection'}}
+        {{#with inspection}}
+        <div style="white-space: no-wrap;">
+          <h1 style="display: inline-block;">{{building}}</h1>
+          <span style="display: inline-block; margin-left: 20px;">{{address}}, {{contact}}: {{contactnumber}}</span>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading items">Comments <a href="#" style="float:right;" class="btn btn-default" id="add-comment-btn"><i class="fa fa-plus"></i></a></div>
+              <div class="panel-body list-of-items">
+                <ul class="list-group">
+                {{#each getComments}}
+                  <li class="list-group-item">
+                    <div class="float-right"><a href="#" class="btn btn-xs btn-danger deleteitem" itemid="{{_id}}"><i class="fa fa-times"></i></a></div>
+                    {{text}}
+                  </li>
+                {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading items">Deficiencies<a href="#"  style="float:right;" class="btn btn-default" id="add-deficiency-btn"><i class="fa fa-plus"></i></a></div>
+              <div class="panel-body list-of-items">
+                <ul class="list-group">
+                {{#each getDeficiencies}}
+                  <li class="list-group-item">
+                    <div class="float-right"><a href="#" class="btn btn-xs btn-danger deleteitem" itemid="{{_id}}"><i class="fa fa-times"></i></a></div>
+                    {{text}}
+                  </li>
+                {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading items">Recommendations<a href="#"  style="float:right;" class="btn btn-default" id="add-recommendation-btn"><i class="fa fa-plus"></i></a></div>
+              <div class="panel-body list-of-items">
+                <ul class="list-group">
+                {{#each getRecommendations}}
+                  <li class="list-group-item">
+                    <div class="float-right"><a href="#" class="btn btn-xs btn-danger deleteitem" itemid="{{_id}}"><i class="fa fa-times"></i></a></div>
+                    {{text}}
+                  </li>
+                {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {{> snackbar}}
+        <div id="add-comment" class="insp-right-form">
+          <div class="row">
+            <div class="insp-right-form-header">Add Comment</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="comment-text">Comment</label>
+              <div class="input-group" style="width: 90%;">
+                <textarea rows=6 style="width: 100%;" id="newcomment" name="newcomment"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+              <a href="#" class="btn btn-primary" id="addcommentbtn">Save</a>
+              <a href="#" class="btn btn-default" id="canceladdcommentbtn">Cancel</a>
+            </div>
+          </div>
+        </div>
+        <div id="add-deficiency" class="insp-right-form">
+          <div class="row">
+            <div class="insp-right-form-header">Add Deficiency</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="comment-text">Deficiency</label>
+              <div class="input-group" style="width: 90%;">
+                <textarea rows=6 style="width: 100%;" id="newdeficiency" name="newdeficiency"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+              <a href="#" class="btn btn-primary" id="adddeficiencybtn">Save</a>
+              <a href="#" class="btn btn-default" id="canceladddeficiencybtn">Cancel</a>
+            </div>
+          </div>
+        </div>
+        <div id="add-recommendation" class="insp-right-form">
+          <div class="row">
+            <div class="insp-right-form-header">Add Recommendation</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <label for="recommendation-text">Recommendation</label>
+              <div class="input-group" style="width: 90%;">
+                <textarea rows=6 style="width: 100%;" id="newrecommendation" name="newrecommendation"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+              <a href="#" class="btn btn-primary" id="addrecommendationbtn">Save</a>
+              <a href="#" class="btn btn-default" id="canceladdrecommendationbtn">Cancel</a>
+            </div>
+          </div>
+        </div>
+        {{/with}}
+      {{else}}
+        {{>loading}}
+      {{/if}}
+    </div>
+  </div>
+</template>

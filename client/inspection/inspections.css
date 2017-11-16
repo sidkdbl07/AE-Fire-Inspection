@@ -1,0 +1,32 @@
+.insp-right-form {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 650px;
+  height: 100%;
+  background-color: #111;
+  transition: 0.5s;
+}
+
+.insp-right-form:not(.show) {
+  right: -650px;
+}
+
+.insp-right-form.show {
+  right: 0px;
+}
+
+.insp-right-form-header {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  color: #57b431;
+  padding-left: 10px;
+  background-color: black;
+  font-size: 25px;
+}
+
+.inspection-controls {
+  height: 60px;
+  line-height: 60px;
+}

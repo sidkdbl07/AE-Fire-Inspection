@@ -1,0 +1,122 @@
+<template name="inspections">
+  <div id="content" class="content">
+    {{> header}}
+    <div class="page-content">
+      <div class="row">
+        <div class="col-sm-2 col-xs-10"><h1>Inspections</h1></div>
+        <div class="col-xs-2 col-xs-offset-1 inspection-controls"><a href="#" id="addinspectionbtn" class="btn btn-default">New</a></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          {{> reactiveTable settings=tableSettings }}
+        </div>
+      </div>
+      {{> snackbar}}
+    </div>
+    <div id="new-inspection" class="insp-right-form">
+      <div class="row">
+        <div class="insp-right-form-header">New Inspection</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <label for="inspection-date">Date</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-date" />
+          </div>
+          <label for="inspection-author">Inspector</label>
+          <div class="input-group">
+            <select class="form-control" id="inspection-author" >
+              {{#each getUsers}}
+              <option value="{{_id}}">{{profile.firstname}} {{profile.lastname}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <label for="inspection-number">Inspection Number</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-number" />
+          </div>
+          <label for="inspection-po">Purchase Order</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-po" />
+          </div>
+          <label for="inspection-status">Status</label>
+          <div class="input-group">
+            <select class="form-control" id="inspection-status">
+              <option value="In Progress">In Progress</option>
+              <option value="In Review">In Review</option>
+              <option value="Complete">Complete</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1">
+          <label for="inspection-building">Building</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-building" />
+          </div>
+          <label for="inspection-address">Building Address</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-address" />
+          </div>
+          <label for="inspection-contact">Building Contact</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-contact" />
+          </div>
+          <label for="inspection-contact-number">Building Contact Number</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-contact-number" />
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 30px;">
+        <div class="col-xs-5">
+          <label for="inspection-manufacturer">Fire Alarm System Manufacturer</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-manufacturer" />
+          </div>
+          <label for="inspection-model">Model Number</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="inspection-model" />
+          </div>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1">
+          <label for="inspection-operation">Operation</label>
+          <div class="input-group">
+            <select class="form-control" id="inspection-operation">
+              <option value="Single Stage">Single Stage</option>
+              <option value="Two Stage">Two Stage</option>
+            </select>
+          </div>
+          <label for="inspection-circuit">Circuit Type</label>
+          <div class="input-group">
+            <select class="form-control" id="inspection-circuit">
+              <option value="Addressable">Addressable</option>
+              <option value="Conventional">Conventional</option>
+              <option value="120 Volt">120 Volt</option>
+            </select>
+          </div>
+          <label for="inspection-wire">Wire Type</label>
+          <div class="input-group">
+            <select class="form-control" id="inspection-wire">
+              <option value="3-Wire">3-Wire</option>
+              <option value="5-Wire">5-Wire</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+          <a href="#" class="btn btn-primary" id="addinspection">Add</a>
+          <a href="#" class="btn btn-default" id="addinspectioncancel">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="inspectionDetailsBtn">
+  <a href="inspection/{{_id}}" class="btn btn-default"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a>
+</template>
+
+<template name="inspectionDate">
+  {{formattedDate inspectiondate}}
+</template>

@@ -1,0 +1,17 @@
+.deleteitem {
+  margin-left: 5px;
+}
+
+.list-of-items {
+  height: 550px;
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.panel-heading.items {
+  font-size: 14px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}

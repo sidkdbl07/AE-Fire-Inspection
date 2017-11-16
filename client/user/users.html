@@ -1,0 +1,52 @@
+<template name="users">
+  <div id="content" class="content">
+    {{> header}}
+    <div class="page-content">
+      <div class="row">
+        <div class="col-sm-2 col-xs-10"><h1>Users</h1></div>
+        <div class="col-xs-2 user-controls"><a href="#" id="adduserbtn" class="btn btn-default">New</a></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          {{> reactiveTable settings=tableSettings }}
+        </div>
+      </div>
+      {{> snackbar}}
+    </div>
+    <div id="new-user" class="right-form">
+      <div class="row">
+        <div class="right-form-header">New User</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="user-firstname">First Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="e.g. George" id="user-firstname" />
+          </div>
+          <label for="user-lastname">Last Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="e.g. McFly" id="user-lastname" />
+          </div>
+          <label for="user-email">E-mail Address</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="e.g. George.McFly@future.ca" id="user-email" />
+          </div>
+          <label for="user-passwd">Password</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="" id="user-passwd" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+          <a href="#" class="btn btn-primary" id="adduser">Add</a>
+          <a href="#" class="btn btn-default" id="addusercancel">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="userDetailsBtn">
+  <a href="user/{{_id}}" class="btn btn-default"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i></a>
+</template>

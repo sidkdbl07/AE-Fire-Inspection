@@ -1,0 +1,155 @@
+<template name="firealarmpanelinspection">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Fire Alarm Panel / Control Unit Inspection</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="fapilocation" id="fapilocation" value="{{getValue 'fapilocation'}}" />
+        </div>
+        FA Panel/Control unit location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="fapiidentification" id="fapiidentification" value="{{getValue 'fapiidentification'}}" />
+        </div>
+        FA Panel/Control unit identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapiinput_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapiinput" id="fapiinput_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapiinput_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapiinput" id="fapiinput_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapiinput_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapiinput" id="fapiinput_N/A"> N/A
+          </label>
+        </div>
+        A: Input circuit designations correctly identified in relation to connected field devices.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapioutput_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapioutput" id="fapioutput_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapioutput_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapioutput" id="fapioutput_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapioutput_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapioutput" id="fapioutput_N/A"> N/A
+          </label>
+        </div>
+        B: Output circuit designations correctly identified in relation to connected field devices.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapicorrectdesignations_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicorrectdesignations" id="fapicorrectdesignations_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapicorrectdesignations_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicorrectdesignations" id="fapicorrectdesignations_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapicorrectdesignations_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicorrectdesignations" id="fapicorrectdesignations_N/A"> N/A
+          </label>
+        </div>
+        C: Correct designations for common control functions and indicators.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapiplugin_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapiplugin" id="fapiplugin_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapiplugin_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapiplugin" id="fapiplugin_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapiplugin_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapiplugin" id="fapiplugin_N/A"> N/A
+          </label>
+        </div>
+        D: Plug-in components and modules securely in place.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapipluginsecure_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapipluginsecure" id="fapipluginsecure_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapipluginsecure_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapipluginsecure" id="fapipluginsecure_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapipluginsecure_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapipluginsecure" id="fapipluginsecure_N/A"> N/A
+          </label>
+        </div>
+        E: Plug-in cables securely in place.
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="fapifirmwaredate" id="fapifirmwaredate" value="{{getValue 'fapifirmwaredate'}}" />
+        </div>
+        F: Record the date, revision and version of firmware and software program.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapicleandust_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicleandust" id="fapicleandust_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapicleandust_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicleandust" id="fapicleandust_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapicleandust_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicleandust" id="fapicleandust_N/A"> N/A
+          </label>
+        </div>
+        G: Clean and free of dust and dirt.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapifuses_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapifuses" id="fapifuses_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapifuses_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapifuses" id="fapifuses_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapifuses_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapifuses" id="fapifuses_N/A"> N/A
+          </label>
+        </div>
+        H: Fuses in accordance with manufacturer’s specification.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapicontroltransponder_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicontroltransponder" id="fapicontroltransponder_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapicontroltransponder_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicontroltransponder" id="fapicontroltransponder_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapicontroltransponder_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapicontroltransponder" id="fapicontroltransponder_N/A"> N/A
+          </label>
+        </div>
+        I: Control unit or transponder lock functional.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'fapitermination_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapitermination" id="fapitermination_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'fapitermination_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapitermination" id="fapitermination_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'fapitermination_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="fapitermination" id="fapitermination_N/A"> N/A
+          </label>
+        </div>
+        J: Termination points from wiring to field devices secure.
+      </div>
+    </div>
+  </div>
+</template>

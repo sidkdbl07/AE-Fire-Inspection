@@ -1,0 +1,289 @@
+<template name="summary">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Summary</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumfasfunctional_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasfunctional" id="sumfasfunctional_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumfasfunctional_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasfunctional" id="sumfasfunctional_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumfasfunctional_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasfunctional" id="sumfasfunctional_N/A"> N/A
+          </label>
+        </div>
+        The Fire Alarm System is now <b>fully</b> functional
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumfasminor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasminor" id="sumfasminor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumfasminor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasminor" id="sumfasminor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumfasminor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasminor" id="sumfasminor_N/A"> N/A
+          </label>
+        </div>
+        The Fire Alarm System has <b>minor deficiencies</b> as noted in this report
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumfasmajor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasmajor" id="sumfasmajor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumfasmajor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasmajor" id="sumfasmajor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumfasmajor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumfasmajor" id="sumfasmajor_N/A"> N/A
+          </label>
+        </div>
+        The Fire Alarm System has <b>major deficiencies</b> as noted in this report
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumextinguishersinplace_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumextinguishersinplace" id="sumextinguishersinplace_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumextinguishersinplace_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumextinguishersinplace" id="sumextinguishersinplace_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumextinguishersinplace_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumextinguishersinplace" id="sumextinguishersinplace_N/A"> N/A
+          </label>
+        </div>
+        All Fire Extinguishers are in place.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumextinguishersmaintenance_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumextinguishersmaintenance" id="sumextinguishersmaintenance_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumextinguishersmaintenance_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumextinguishersmaintenance" id="sumextinguishersmaintenance_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumextinguishersmaintenance_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumextinguishersmaintenance" id="sumextinguishersmaintenance_N/A"> N/A
+          </label>
+        </div>
+        Fire Extinguishers require maintenance.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumsprinkfunctional_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkfunctional" id="sumsprinkfunctional_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkfunctional_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkfunctional" id="sumsprinkfunctional_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkfunctional_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkfunctional" id="sumsprinkfunctional_N/A"> N/A
+          </label>
+        </div>
+        The Sprinkler System is now <b>fully</b> functional
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumsprinkminor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkminor" id="sumsprinkminor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkminor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkminor" id="sumsprinkminor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkminor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkminor" id="sumsprinkminor_N/A"> N/A
+          </label>
+        </div>
+        The Sprinkler System has <b>minor deficiencies</b> as noted in this report.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumsprinkmajor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkmajor" id="sumsprinkmajor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkmajor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkmajor" id="sumsprinkmajor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkmajor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkmajor" id="sumsprinkmajor_N/A"> N/A
+          </label>
+        </div>
+        The Sprinler System has <b>major deficiencies</b> as noted in this report.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumsprinkmaintenance_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkmaintenance" id="sumsprinkmaintenance_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkmaintenance_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkmaintenance" id="sumsprinkmaintenance_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumsprinkmaintenance_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumsprinkmaintenance" id="sumsprinkmaintenance_N/A"> N/A
+          </label>
+        </div>
+        The Sprinkler System requires maintenance.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumgenfunctional_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenfunctional" id="sumgenfunctional_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumgenfunctional_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenfunctional" id="sumgenfunctional_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumgenfunctional_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenfunctional" id="sumgenfunctional_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Generator is now <b>fully</b> functional
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumgenminor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenminor" id="sumgenminor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumgenminor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenminor" id="sumgenminor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumgenminor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenminor" id="sumgenminor_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Generator has <b>minor deficiencies</b> as noted in this report.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumgenmajor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenmajor" id="sumgenmajor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumgenmajor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenmajor" id="sumgenmajor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumgenmajor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenmajor" id="sumgenmajor_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Generator has <b>major deficiencies</b> as noted in this report.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumgenmaintenance_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenmaintenance" id="sumgenmaintenance_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumgenmaintenance_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenmaintenance" id="sumgenmaintenance_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumgenmaintenance_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumgenmaintenance" id="sumgenmaintenance_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Generator requires maintenance.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumlightsfunctional_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsfunctional" id="sumlightsfunctional_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsfunctional_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsfunctional" id="sumlightsfunctional_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsfunctional_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsfunctional" id="sumlightsfunctional_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Lights are now <b>fully</b> functional
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumlightsminor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsminor" id="sumlightsminor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsminor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsminor" id="sumlightsminor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsminor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsminor" id="sumlightsminor_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Lights have <b>minor deficiencies</b> as noted in this report.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumlightsmajor_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsmajor" id="sumlightsmajor_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsmajor_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsmajor" id="sumlightsmajor_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsmajor_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsmajor" id="sumlightsmajor_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Lights have <b>major deficiencies</b> as noted in this report.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumlightsmaintenance_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsmaintenance" id="sumlightsmaintenance_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsmaintenance_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsmaintenance" id="sumlightsmaintenance_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumlightsmaintenance_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumlightsmaintenance" id="sumlightsmaintenance_N/A"> N/A
+          </label>
+        </div>
+        The Emergancy Lights require maintenance.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumnotes_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumnotes" id="sumnotes_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumnotes_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumnotes" id="sumnotes_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumnotes_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumnotes" id="sumnotes_N/A"> N/A
+          </label>
+        </div>
+        Additonal notes have been attached.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'sumnsent_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumnsent" id="sumnsent_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'sumnsent_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumnsent" id="sumnsent_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'sumnsent_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="sumnsent" id="sumnsent_N/A"> N/A
+          </label>
+        </div>
+        A copy of this report has been sent to:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="sumemail" id="sumemail" value="{{getValue 'sumemail'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;e-mail:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="sumfax" id="sumfax" value="{{getValue 'sumfax'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;fax:
+      </div>
+    </div>
+  </div>
+</template>

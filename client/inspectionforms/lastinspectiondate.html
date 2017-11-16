@@ -1,0 +1,136 @@
+<template name="lastinspectiondate">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Last Inspection Date</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'lidfas_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidfas" id="lidfas_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'lidfas_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidfas" id="lidfas_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'lidfas_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidfas" id="lidfas_N/A"> N/A
+          </label>
+        </div>
+        <b>Fire Alarm System</b>:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield datepicker" style="width: 100px;" name="lidfasdate" id="lidfasdate" value="{{getValue 'lidfasdate'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;Date Inspected:
+      </div>
+
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'lidhose_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidhose" id="lidhose_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'lidhose_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidhose" id="lidhose_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'lidhose_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidhose" id="lidhose_N/A"> N/A
+          </label>
+        </div>
+        <b>Fire Hoses</b>:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield datepicker" style="width: 100px;" name="lidhosedate" id="lidhosedate" value="{{getValue 'lidhosedate'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;Date Inspected:
+      </div>
+
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'lidsprinkler_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidsprinkler" id="lidsprinkler_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'lidsprinkler_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidsprinkler" id="lidsprinkler_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'lidsprinkler_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidsprinkler" id="lidsprinkler_N/A"> N/A
+          </label>
+        </div>
+        <b>Sprinkler System</b>:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield datepicker" style="width: 100px;" name="lidsprinklerdate" id="lidsprinklerdate" value="{{getValue 'lidsprinklerdate'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;Date Inspected:
+      </div>
+
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'lidgenerator_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidgenerator" id="lidgenerator_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'lidgenerator_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidgenerator" id="lidgenerator_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'lidgenerator_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidgenerator" id="lidgenerator_N/A"> N/A
+          </label>
+        </div>
+        <b>Emergency Generator</b>:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield datepicker" style="width: 100px;" name="lidgeneratordate" id="lidgeneratordate" value="{{getValue 'lidgeneratordate'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;Date Inspected:
+      </div>
+
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'lidlights_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidlights" id="lidlights_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'lidlights_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidlights" id="lidlights_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'lidlights_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidlights" id="lidlights_N/A"> N/A
+          </label>
+        </div>
+        <b>Emergency Lights</b>:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield datepicker" style="width: 100px;" name="lidlightsdate" id="lidlightsdate" value="{{getValue 'lidlightsdate'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;Date Inspected:
+      </div>
+
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'lidother_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidother" id="lidother_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'lidother_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidother" id="lidother_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'lidother_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="lidother" id="lidother_N/A"> N/A
+          </label>
+        </div>
+        <b>Other Systems</b>:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield datepicker" style="width: 100px;" name="lidotherdate" id="lidotherdate" value="{{getValue 'lidotherdate'}}" />
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;Date Inspected:
+      </div>
+    </div>
+  </div>
+</template>

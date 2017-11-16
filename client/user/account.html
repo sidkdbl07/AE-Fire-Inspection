@@ -1,0 +1,62 @@
+<template name="account">
+  <div id="content" class="content">
+    {{> header}}
+    <div class="page-content">
+      {{#if subsReady 'user'}}
+        {{#with user}}
+        <h1>My Account</h1>
+        <div class="row">
+          <div class="col-sm-5 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">User Details</div>
+              <div class="panel-body">
+                <label for="user-firstname">First Name</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{profile.firstname}}" placeholder="e.g. George" id="user-firstname" />
+                </div>
+                <label for="user-lastname">Last Name</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{profile.lastname}}" placeholder="e.g. McFly" id="user-lastname" />
+                </div>
+                <label for="user-email">E-mail Address</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" value="{{emails.[0].address}}" placeholder="e.g. George.McFly@future.ca" id="user-email" />
+                </div>
+              </div>
+              <div class="panel-footer">
+                <a href="#" class="btn btn-primary" id="save-user-details-btn">Save</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5 col-sm-offset-1 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">Change Password</div>
+              <div class="panel-body">
+                <label for="new-password">Old Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="old-password" />
+                </div>
+                <label for="new-password">New Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="new-password" />
+                </div>
+                <label for="confirm-password">Confirm Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="confirm-password" />
+                </div>
+              </div>
+              <div class="panel-footer">
+                <a href="#" class="btn btn-primary" id="save-user-password-btn">Save</a>
+              </div>
+            </div>
+            <div id="password-error" class="alert alert-danger" style="display: none; margin: 20px;" role="alert">You must confirm your new password, and it must not be empty</div>
+          </div>
+        </div>
+        {{/with}}
+        {{> snackbar}}
+      {{else}}
+        {{>loading}}
+      {{/if}}
+    </div>
+  </div>
+</template>

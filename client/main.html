@@ -1,0 +1,41 @@
+
+<head>
+  <title>Fire Inspections</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  {{>mainlayout}}
+</body>
+
+<template name="mainlayout">
+  {{> Template.dynamic template=main}}
+  {{> Template.dynamic template=side}}
+</template>
+
+<template name="sidenav">
+  <div id="sidenav" class="sidenav {{#if menuIsPinned}}menu-pinned{{/if}}">
+    <div class="sidenav-control-container">
+      <div class="menu-pinner sidenav-control"><i id="menu-pinner" class="fa {{#if menuIsPinned}}fa-circle{{else}}fa-circle-o{{/if}}" aria-hidden="true"></i></div>
+    </div>
+    <div class="menu">
+      <div class="menu-item {{#if isMenuItemSelected 'Inspections'}}selected-menu-item{{/if}}" name="Inspections"><div class="menu-item-label">Fire Inspections</div><div class="menu-item-icon"><i class="fa fa-lg fa-fire" aria-hidden="true"></i></div></div>
+      {{#if isWeb}}
+      <div class="menu-item {{#if isMenuItemSelected 'Users'}}selected-menu-item{{/if}}" name="Users"><div class="menu-item-label">Users</div><div class="menu-item-icon"><i class="fa fa-lg fa-users" aria-hidden="true"></i></div></div>
+      {{/if}}
+      <div class="menu-item {{#if isMenuItemSelected 'Account'}}selected-menu-item{{/if}}" name="Account"><div class="menu-item-label">My Account</div><div class="menu-item-icon"><i class="fa fa-lg fa-user" aria-hidden="true"></i></div></div>
+      <div class="menu-item" name="Signout"><div class="menu-item-label">Logout</div><div class="menu-item-icon"><i class="fa fa-lg fa-sign-out" aria-hidden="true"></i></div></div>
+    </div>
+  </div>
+  <div id="screen-size-tester" class="hidden-xs"></div>
+</template>
+
+<template name="blank"></template>
+
+<template name="loading">
+  <div class="row">
+    <div class="col-xs-12" style="text-align: center;">
+      <div class="loader"></div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,222 @@
+<template name="annunciatorremotetrouble">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Annunciator, Remote Trouble Signal Unit, Display and Control Centre Test and Inspection</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="artlocation" id="artlocation" value="{{getValue 'artlocation'}}" />
+        </div>
+        Annunciator or remote trouble signal unit location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="artidentification" id="artidentification" value="{{getValue 'artidentification'}}" />
+        </div>
+        Annunciator or remote trouble signal unit identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artpoweron_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artpoweron" id="artpoweron_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artpoweron_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artpoweron" id="artpoweron_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artpoweron_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artpoweron" id="artpoweron_N/A"> N/A
+          </label>
+        </div>
+        A:  Power ‘on’ indicator operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artindiv_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artindiv" id="artindiv_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artindiv_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artindiv" id="artindiv_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artindiv_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artindiv" id="artindiv_N/A"> N/A
+          </label>
+        </div>
+        B: Individual alarm, and <u>supervisory input zones</u> are clearly indicated and separately designated.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artindivdesignation_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artindivdesignation" id="artindivdesignation_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artindivdesignation_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artindivdesignation" id="artindivdesignation_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artindivdesignation_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artindivdesignation" id="artindivdesignation_N/A"> N/A
+          </label>
+        </div>
+        C: Individual alarm and <u>supervisory zone designation labels</u> are properly identified.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artwherefielddevices_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artwherefielddevices" id="artwherefielddevices_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artwherefielddevices_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artwherefielddevices" id="artwherefielddevices_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artwherefielddevices_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artwherefielddevices" id="artwherefielddevices_N/A"> N/A
+          </label>
+        </div>
+        D: Where active and supporting field devices are utilized, device labels shall be confirmed to correspond with actual field location.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artcommentrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artcommentrouble" id="artcommentrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artcommentrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artcommentrouble" id="artcommentrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artcommentrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artcommentrouble" id="artcommentrouble_N/A"> N/A
+          </label>
+        </div>
+        E: Common trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artlamptest_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artlamptest" id="artlamptest_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artlamptest_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artlamptest" id="artlamptest_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artlamptest_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artlamptest" id="artlamptest_N/A"> N/A
+          </label>
+        </div>
+        F: Visual indicator test (lamp test) operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artinputwiring_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artinputwiring" id="artinputwiring_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artinputwiring_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artinputwiring" id="artinputwiring_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artinputwiring_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artinputwiring" id="artinputwiring_N/A"> N/A
+          </label>
+        </div>
+        G: Input wiring from control unit or transponder is supervised.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artsignalsilencevisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artsignalsilencevisual" id="artsignalsilencevisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artsignalsilencevisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artsignalsilencevisual" id="artsignalsilencevisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artsignalsilencevisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artsignalsilencevisual" id="artsignalsilencevisual_N/A"> N/A
+          </label>
+        </div>
+        H: Alarm signal silence visual indicator operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artswitches_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artswitches" id="artswitches_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artswitches_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artswitches" id="artswitches_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artswitches_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artswitches" id="artswitches_N/A"> N/A
+          </label>
+        </div>
+        I: Switches for ancillary functions operate as per design and
+        specification, or in accordance with documentation as detailed in
+        Appendix E, Description of Fire Alarm System for Inspection and Test
+        Procedures.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artancillaryvisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artancillaryvisual" id="artancillaryvisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artancillaryvisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artancillaryvisual" id="artancillaryvisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artancillaryvisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artancillaryvisual" id="artancillaryvisual_N/A"> N/A
+          </label>
+        </div>
+        J: Other ancillary function visual indicators operate.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artmanualactivationalarm_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artmanualactivationalarm" id="artmanualactivationalarm_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artmanualactivationalarm_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artmanualactivationalarm" id="artmanualactivationalarm_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artmanualactivationalarm_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artmanualactivationalarm" id="artmanualactivationalarm_N/A"> N/A
+          </label>
+        </div>
+        K: Manual activation of alarm signal and indication operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artdisplaysvisible_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artdisplaysvisible" id="artdisplaysvisible_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artdisplaysvisible_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artdisplaysvisible" id="artdisplaysvisible_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artdisplaysvisible_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artdisplaysvisible" id="artdisplaysvisible_N/A"> N/A
+          </label>
+        </div>
+        L: Displays are visible in installed location.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artoperatesemergency_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artoperatesemergency" id="artoperatesemergency_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artoperatesemergency_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artoperatesemergency" id="artoperatesemergency_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artoperatesemergency_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artoperatesemergency" id="artoperatesemergency_N/A"> N/A
+          </label>
+        </div>
+        M: Operates on emergency power.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'artmultilinesequential_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artmultilinesequential" id="artmultilinesequential_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'artmultilinesequential_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artmultilinesequential" id="artmultilinesequential_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'artmultilinesequential_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="artmultilinesequential" id="artmultilinesequential_N/A"> N/A
+          </label>
+        </div>
+        N:  Multi-line sequential display operates as per Clause 6.4.1(N), where utilized.
+      </div>
+    </div>
+  </div>
+</template>

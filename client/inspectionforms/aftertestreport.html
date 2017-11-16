@@ -1,0 +1,129 @@
+<template name="aftertestreport">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>After Test Report Card</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atrreconnectmonitoring_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrreconnectmonitoring" id="atrreconnectmonitoring_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atrreconnectmonitoring_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrreconnectmonitoring" id="atrreconnectmonitoring_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atrreconnectmonitoring_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrreconnectmonitoring" id="atrreconnectmonitoring_N/A"> N/A
+          </label>
+        </div>
+        Reconnected auxillary functions? (monitoring)
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atrancillary_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrancillary" id="atrancillary_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atrancillary_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrancillary" id="atrancillary_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atrancillary_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrancillary" id="atrancillary_N/A"> N/A
+          </label>
+        </div>
+        Reconnected ancillary functions?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atrreconnecttimelimit_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrreconnecttimelimit" id="atrreconnecttimelimit_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atrreconnecttimelimit_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrreconnecttimelimit" id="atrreconnecttimelimit_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atrreconnecttimelimit_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrreconnecttimelimit" id="atrreconnecttimelimit_N/A"> N/A
+          </label>
+        </div>
+        Reconnected time limit cutouts?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atrsystemnormalpower_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrsystemnormalpower" id="atrsystemnormalpower_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atrsystemnormalpower_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrsystemnormalpower" id="atrsystemnormalpower_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atrsystemnormalpower_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrsystemnormalpower" id="atrsystemnormalpower_N/A"> N/A
+          </label>
+        </div>
+        Ensured Fire Alarm System is on normal power?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atradvisebuildingmanage_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atradvisebuildingmanage" id="atradvisebuildingmanage_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atradvisebuildingmanage_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atradvisebuildingmanage" id="atradvisebuildingmanage_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atradvisebuildingmanage_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atradvisebuildingmanage" id="atradvisebuildingmanage_N/A"> N/A
+          </label>
+        </div>
+        Advised building management that work is complete?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atradvisefiredept_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atradvisefiredept" id="atradvisefiredept_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atradvisefiredept_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atradvisefiredept" id="atradvisefiredept_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atradvisefiredept_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atradvisefiredept" id="atradvisefiredept_N/A"> N/A
+          </label>
+        </div>
+        Advised Fire Department that work is complete?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atrfasfunctional_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrfasfunctional" id="atrfasfunctional_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atrfasfunctional_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrfasfunctional" id="atrfasfunctional_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atrfasfunctional_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrfasfunctional" id="atrfasfunctional_N/A"> N/A
+          </label>
+        </div>
+        Ensured Fire Alarm System is functional?
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'atrfireboxinstall_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrfireboxinstall" id="atrfireboxinstall_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'atrfireboxinstall_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrfireboxinstall" id="atrfireboxinstall_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'atrfireboxinstall_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="atrfireboxinstall" id="atrfireboxinstall_N/A"> N/A
+          </label>
+        </div>
+        Is there a Fire Department Key Box installed in an approved location?
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="atrkeylocation" id="atrkeylocation" value="{{getValue 'atrkeylocation'}}" />
+        </div>
+        Key box location:
+      </div>
+    </div>
+  </div>
+</template>

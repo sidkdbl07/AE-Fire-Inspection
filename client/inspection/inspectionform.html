@@ -1,0 +1,34 @@
+<template name="inspectionform">
+  <div id="content" class="content">
+    {{> header}}
+    <div class="inspection-observations">
+      <div class="btn-group inspection-control" data-toggle="buttons" style="margin-right: 70px;">
+        <label class="btn {{#if isTestComplete}}btn-success{{else}}btn-default{{/if}}">
+          <input type="radio" class="radiobutton test-status" name="complete" id="form-status_complete"> Complete
+        </label>
+        <label class="btn {{#if isTestPending}}btn-primary{{else}}btn-default{{/if}}">
+          <input type="radio" class="radiobutton test-status" name="pending" id="form-status_pending"> Pending
+        </label>
+        <label class="btn {{#if isTestNA}}btn-danger{{else}}btn-default{{/if}}">
+          <input type="radio" class="radiobutton test-status" name="n/a" id="form-status_na"> N/A
+        </label>
+      </div>
+      <a href="/inspection/items/{{getInspection._id}}?goback={{formtemplate}}">
+        <div class="inspection-control"><i class="fa fa-lg fa-comment"></i> <span class="badge">{{numberOfComments}}</span></div>
+        <div class="inspection-control"><i class="fa fa-lg fa-flag"></i> <span class="badge">{{numberOfDeficiencies}}</span></div>
+        <div class="inspection-control"><i class="fa fa-lg fa-sticky-note"></i> <span class="badge">{{numberOfRecommendations}}</span></div>
+      </a>
+    </div>
+    <div class="page-content">
+      {{#with getInspection}}
+      <a href="/inspection/{{_id}}"><i class="fa fa-arrow-left"></i> Back to Inspection Details</a><br/>
+      <div style="white-space: no-wrap;">
+        <h1 style="display: inline-block;">{{building}}</h1>
+        <span style="display: inline-block; margin-left: 20px;">{{address}}, {{contact}}: {{contactnumber}}</span>
+      </div>
+      {{/with}}
+      {{> Template.dynamic template=formtemplate}}
+    </div>
+    {{> snackbar}}
+  </div>
+</template>

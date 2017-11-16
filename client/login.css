@@ -1,0 +1,14 @@
+.content {
+    width: calc(100% - 70px);
+}
+
+.login-container {
+  width: 400px;
+  margin: auto;
+  border-top: 1px solid #999;
+}
+
+.login-title {
+  width: 100%;
+  text-align: center;
+}

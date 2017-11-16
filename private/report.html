@@ -1,0 +1,978 @@
+<html>
+<head>
+  <style>
+  {{css}}
+  </style>
+</head>
+<body>
+  <header id="page-header">
+    <div>
+      <img src="{{logo}}" border="0" height="75" />
+      <div class="header-info">
+        <table width="100%">
+          <tr>
+            <td width="50%" class="header-content">Fire Alarm Division</td>
+            <td width="50%" class="header-content" style="text-align: right;">
+              P: 250-545-3672<br/>
+              200 2800 29 St<br/>
+              Vernon, BC<br/>
+              V1T 9P9
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </header>
+
+  <h1 style="margin-top: 100px;">Fire Alarm System Test and Inspection Report</h1>
+  <table width="100%">
+    <tr>
+      <td colspan="2"><label>Inspection Number:</label> {{insp.number}}</td>
+      <td colspan="2"><label>Date:</label> {{formatDate insp.inspectiondate}}</td>
+    </tr>
+    <tr>
+      <td colspan="2"><label>Building Name:</label> {{insp.building}}</td>
+      <td colspan="2"><label>Contact:</label> {{insp.contact}}</td>
+    </tr>
+    <tr>
+      <td colspan="2"><label>Address:</label> {{insp.address}}</td>
+      <td colspan="2"><label>Contact Info:</label> {{insp.contactnumber}}</td>
+    </tr>
+    <tr>
+      <td colspan="2"><label>System Manufacturer:</label> {{insp.manufacturer}}</td>
+      <td colspan="2"><label>Purchase Order:</label> {{insp.po}}</td>
+    </tr>
+    <tr>
+      <td width="25%"><label>Model:</label> {{insp.model}}</td>
+      <td width="25%"><label>Operation:</label> {{insp.operation}}</td>
+      <td width="25%"><label>Circuit:</label> {{insp.circuit}}</td>
+      <td width="25%"><label>Wiring:</label> {{insp.wire}}</td>
+    </tr>
+  </table>
+
+  <!-- Test Results -->
+  <h1 class="spacer">Test Results</h1>
+  {{#if testNA insp._id 'testresults'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "The fire alarm system functioned properly under general alarm conditions." insp._id 'generalalarmconditions'}}}
+    {{{getRowYNNA "All manual alarm initiating devices operating with main A.C. power off, locations listed in report?" insp._id 'acpoweroff'}}}
+    {{{getRowYNNA "The fire alarm system functioned correctly during the above test." insp._id 'firealarmcorrect'}}}
+    {{{getRowYNNA "Each manual alarm initiating device has been tested and detail provided?" insp._id 'manualalarminitiation'}}}
+    {{{getRowYNNA "Each automatic alarm initiating device has been tested and details provided?" insp._id 'automaticalarminitiation'}}}
+    {{{getRowYNNA "Each audible and visual signaling device has been tested and details provided?" insp._id 'audiblevisualsignaling'}}}
+    {{{getRowYNNA "Correct Annunciation has been confirmed for each device tested?" insp._id 'correctannunciationconfirmed'}}}
+  </table>
+  {{/if}}
+
+  <p class="spacer">
+    This is to certify that the fire alarm system at the above noted address has been tested
+    in accordancve with CAN/ULC-S536-M13 on this <u>{{dateSentence insp.inspectiondate}}</u>
+    and these records document the results of the testing performed.
+  </p>
+  <table width="100%" class="spacer">
+    <tr>
+      <td width="33%"><div class="align-center">{{insp.author}}</div></td>
+      <td width="33%"><div class="align-center">--INSERT CERT #--</div></td>
+      <td width="33%"><div class="align-center">Associated</div></td>
+    </tr>
+    <tr>
+      <td class="label"><div class="align-center">Signature of Technician</div></td>
+      <td class="label"><div class="align-center">Certification No.</div></td>
+      <td class="label"><div class="align-center">Company</div></td>
+    </tr>
+  </table>
+  <p class="spacer">
+    Test and Maintenance codes require that this record be maintained on site by the building owner for a
+    minimum of two years
+  </p>
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page break -->
+
+  <h1 style="margin-top: 100px;">
+    Fire Alarm Panel / Control Unit Test<br/>
+    <span class="helper">Reference: Clauses 6.1.3, 6.2.2.1</span>
+  </h1>
+  {{#if testNA insp._id 'firealarmpaneltest'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "FA Panel/Control unit location: " insp._id 'faptlocation' true}}}
+  {{{getValue "FA Panel/Control unit identification: " insp._id 'faptidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Power ‘ON’ visual indicator operates." insp._id 'faptpoweron'}}}
+    {{{getRowYNNA "B: Common <u>visual</u> trouble signal operates." insp._id 'faptsignaloperates'}}}
+    {{{getRowYNNA "C: Common <u>audible</u> trouble signal operates." insp._id 'faptaudibleoperates'}}}
+    {{{getRowYNNA "D: Trouble signal silence switch operates." insp._id 'fapttroublesignalsilence'}}}
+    {{{getRowYNNA "E: Main power supply failure trouble signal operates." insp._id 'faptpowersupplyfailure'}}}
+    {{{getRowYNNA "F: Ground fault tested on positive and negative initiates trouble signal" insp._id 'faptfaultposnegtrouble'}}}
+    {{{getRowYNNA "G: Alert signal operates." insp._id 'faptalertsignal'}}}
+    {{{getRowYNNA "H: Alarm signal operates." insp._id 'faptalarmsignal'}}}
+    {{{getRowYNNA "I: Automatic transfer from alert signal to alarm signal operates." insp._id 'faptautomatictransfer'}}}
+    {{{getRowYNNA "J: Manual transfer from alert signal to alarm signal operates" insp._id 'faptmanualtransfer'}}}
+    {{{getRowYNNA "K: Automatic transfer from alert signal to alarm signal cancel (acknowledge) feature operates on a two-stage system." insp._id 'faptautomatictransfertwostage'}}}
+    {{{getRowYNNA "L: Alarm signal silence inhibit function operates." insp._id 'faptalarmsignalsilence'}}}
+    {{{getRowYNNA "M: Alarm signal manual silence operates." insp._id 'faptalarmmanualsilence'}}}
+    {{{getRowYNNA "N: Alarm signal silence visual indication operates." insp._id 'faptalarmsilencevisual'}}}
+    {{{getRowYNNA "O: Alarm signal, when silenced, automatically reinitiates upon subsequent alarm." insp._id 'faptsilencereinitiates'}}}
+    {{{getRowValue "P: Alarm signal silence automatic cut-out timer." insp._id 'faptalarmcutouttimer'}}}
+    {{{getRowYNNA "Q: Audible and visual alert signals and alarm signals programmed and operate per design and specification; or documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures." insp._id 'faptappendixe'}}}
+    {{{getRowYNNA "R: Input circuit, alarm and supervisory operation, including audible and visual indication operates." insp._id 'faptinputcircuitaudiblevisual'}}}
+    {{{getRowYNNA "S: Input circuit supervision fault causes a trouble indication." insp._id 'faptcircuitsupervisionfault'}}}
+    {{{getRowYNNA "T: Output circuit alarm indicators operate." insp._id 'faptcircuitalarmindic'}}}
+    {{{getRowYNNA "U: Output circuit supervision fault causes a trouble indication." insp._id 'faptcircuitsupervisiontroubleindic'}}}
+    {{{getRowYNNA "V: Visual indicator test (lamp test)." insp._id 'faptlampstest'}}}
+    {{{getRowYNNA "W: Coded signal sequences operate not less than the required number of times and the correct alarm signal operates thereafter." insp._id 'faptcodedsignalalarmsignal'}}}
+    {{{getRowYNNA "X: Coded signal sequences are not interrupted by subsequent alarms." insp._id 'faptcodedsequenceinteruppted'}}}
+    {{{getRowYNNA "Y: Ancillary device by-pass will result in a trouble signal." insp._id 'faptancillarybypasstrouble'}}}
+    {{{getRowYNNA "Z: Input circuit to output circuit operation, including ancillary device circuits, for correct program operation, as per design and specification, or documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures." insp._id 'faptinpitcircuittooutput'}}}
+    {{{getRowYNNA "AA: Fire alarm system reset operates." insp._id 'faptrsystemreset'}}}
+    {{{getRowYNNA "BB: Main power supply to emergency power supply transfer operates." insp._id 'faptemergepowertrnasfer'}}}
+    {{{getRowYNNA "CC: Smoke detector alarm verification (status change confirmation) verified. [Refer Subsection 6.7.4.3, Smoke Detector Alarm Verification (Status Change Confirmation)]." insp._id 'faptsmokedetector'}}}
+  </table>
+  {{/if}}
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+    Voice Communication Test<br/>
+    <span class="helper">Reference: Clause 6.1.3, 6.2.3.1</span>
+  </h1>
+  {{#if testNA insp._id 'voicecommunicationtest'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Power ‘ON’ indicator operates." insp._id 'vctpoweron'}}}
+    {{{getRowYNNA "B: Common visual trouble signal operates." insp._id 'vctvisualtrouble'}}}
+    {{{getRowYNNA "C: Common audible trouble signal operates" insp._id 'vctaudibletrouble'}}}
+    {{{getRowYNNA "D: Trouble signal silence switch operates." insp._id 'vcttroubleswitch'}}}
+    {{{getRowYNNA "E: All-call voice paging, including visual indicator, operates." insp._id 'vctallcall'}}}
+    {{{getRowYNNA "F: Output circuits for selective voice paging, including visual indication, operates." insp._id 'vctselectivevoicepaging'}}}
+    {{{getRowYNNA "G: Output circuits for selective voice paging trouble operation, including visual indication, operates." insp._id 'vctoutputselectivetrouble'}}}
+    {{{getRowYNNA "H: Microphone, including press to talk switch, operates" insp._id 'vctmicrophone'}}}
+    {{{getRowYNNA "I: Operation of voice paging does not interfere with initial inhibit time of alert signal or alarm signal." insp._id 'vctoperationinterfereinitial'}}}
+    {{{getRowYNNA "J: All-call voice paging operates (on emergency power supply)." insp._id 'vctallcalemergencypower'}}}
+    {{{getRowYNNA "K: Where systems use back-up amplifiers, the automatic transfer feature operates." insp._id 'vctbackupampstransfer'}}}
+    {{{getRowYNNA "L: Circuits for emergency telephone call-in operation, including audible and visual indication, operates." insp._id 'vctcircuitsphonecallin'}}}
+    {{{getRowYNNA "M: Circuits for emergency telephones for operation, including two-way voice communication, operates." insp._id 'vctcircuitemergtelephonetwoway'}}}
+    {{{getRowYNNA "N: Circuits for emergency telephone trouble operation, including visual indication, operates." insp._id 'vctcircuitemergtelephonevisual'}}}
+    {{{getRowYNNA "O: Emergency telephone verbal communication operates." insp._id 'vctemergverbal'}}}
+    {{{getRowYNNA "P: Emergency telephone operable or in-use tone at handset operates." insp._id 'vctemerginusehandset'}}}
+    {{{getRowYNNA "Q: While in standby mode, voice communication busses used for paging, alert signal, alarm signal, and emergency telephone communication circuits, an open circuit fault, or short circuit fault, or operation of an overcurrent protective device provided for the purpose, shall result in a specific trouble indication specific to the faulty buss." insp._id 'vctstandby'}}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+    Fire Alarm Panel/Control Unit Inspection<br/>
+    <span class="helper">Reference: Clauses 6.1.3, 6.2.4.1</span>
+  </h1>
+  {{#if testNA insp._id 'firealarmpanelinspection'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "FA Panel/Control unit location: " insp._id 'fapilocation' true}}}
+  {{{getValue "FA Panel/Control unit identification: " insp._id 'fapiidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Input circuit designations correctly identified in relation to connected field devices." insp._id 'fapiinput'}}}
+    {{{getRowYNNA "B: Output circuit designations correctly identified in relation to connected field devices." insp._id 'fapioutput'}}}
+    {{{getRowYNNA "C: Correct designations for common control functions and indicators." insp._id 'fapicorrectdesignations'}}}
+    {{{getRowYNNA "D: Plug-in components and modules securely in place." insp._id 'fapiplugin'}}}
+    {{{getRowYNNA "E: Plug-in cables securely in place." insp._id 'fapipluginsecure'}}}
+    {{{getRowValue "F: Record the date, revision and version of firmware and software program." insp._id 'fapifirmwaredate'}}}
+    {{{getRowYNNA "G: Clean and free of dust and dirt." insp._id 'fapicleandust'}}}
+    {{{getRowYNNA "H: Fuses in accordance with manufacturer’s specification." insp._id 'fapifuses'}}}
+    {{{getRowYNNA "I: Control unit or transponder lock functional." insp._id 'fapicontroltransponder'}}}
+    {{{getRowYNNA "J: Termination points from wiring to field devices secure." insp._id 'fapitermination'}}}
+  </table>
+  {{/if}}
+
+  <h1 style="margin-top: 100px;">
+    Power Supply Inspection<br/>
+    <span class="helper">Reference: Clauses 6.1.3, 6.3.1</span>
+  </h1>
+  {{#if testNA insp._id 'powersupplyinspection'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "FA Panel/Control unit location: " insp._id 'psilocation' true}}}
+  {{{getValue "FA Panel/Control unit identification: " insp._id 'psiidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Fused in accordance with the manufacturer’s marked rating of the system." insp._id 'psifusedmarkedrating'}}}
+    {{{getRowYNNA "B: Adequate to meet the requirements of the system." insp._id 'psiadequate'}}}
+    {{{getRowYNNA "C: Where power isolation modules are installed in a power distribution riser serving field devices, wiring shall be shorted on the isolated side, annunciation of the fault confirmed, and then a device on the source side shall be operated, and activation confirmed at the control unit or transponder." insp._id 'psiisolation'}}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+    Annunciator, Remote Trouble Signal Unit, Display and Control Centre Test and Inspection<br/>
+    <span class="helper">Reference: Clauses 6.1.4, 6.4.1</span>
+  </h1>
+  {{#if testNA insp._id 'annunciatorremotetrouble'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "Annunciator or remote trouble signal unit location: " insp._id 'artlocation' true}}}
+  {{{getValue "Annunciator or remote trouble signal unit identification: " insp._id 'artidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A:  Power ‘on’ indicator operates." insp._id 'artpoweron'}}}
+    {{{getRowYNNA "B: Individual alarm, and <u>supervisory input zones</u> are clearly indicated and separately designated." insp._id 'artindiv'}}}
+    {{{getRowYNNA "C: Individual alarm and <u>supervisory zone designation labels</u> are properly identified." insp._id 'artindivdesignation'}}}
+    {{{getRowYNNA "D: Where active and supporting field devices are utilized, device labels shall be confirmed to correspond with actual field location." insp._id 'artwherefielddevices'}}}
+    {{{getRowYNNA "E: Common trouble signal operates." insp._id 'artcommentrouble'}}}
+    {{{getRowYNNA "F: Visual indicator test (lamp test) operates." insp._id 'artlamptest'}}}
+    {{{getRowYNNA "G: Input wiring from control unit or transponder is supervised." insp._id 'artinputwiring'}}}
+    {{{getRowYNNA "H: Alarm signal silence visual indicator operates." insp._id 'artsignalsilencevisual'}}}
+    {{{getRowYNNA "I: Switches for ancillary functions operate as per design and specification, or in accordance with documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures." insp._id 'artswitches'}}}
+    {{{getRowYNNA "J: Other ancillary function visual indicators operate." insp._id 'artancillaryvisual'}}}
+    {{{getRowYNNA "K: Manual activation of alarm signal and indication operates." insp._id 'artmanualactivationalarm'}}}
+    {{{getRowYNNA "L: Displays are visible in installed location." insp._id 'artdisplaysvisible'}}}
+    {{{getRowYNNA "M: Operates on emergency power." insp._id 'artoperatesemergency'}}}
+    {{{getRowYNNA "N: Multi-line sequential display operates as per Clause 6.4.1(N), where utilized." insp._id 'artmultilinesequential'}}}
+  </table>
+  {{/if}}
+
+  <h1 style="margin-top: 30px;">
+    Annunciator or Sequential Display<br/>
+    <span class="helper">Reference: Clauses 6.1.4, 6.4.2</span>
+  </h1>
+  {{#if testNA insp._id 'annunciatorsequential'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "Annunciator or sequential display location: " insp._id 'asdlocation' true}}}
+  {{{getValue "Annunciator or sequential display identification: " insp._id 'asdidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A:  Power ‘on’ indicator operates." insp._id 'asdpoweron'}}}
+    {{{getRowYNNA "B: Individual alarm and supervisory zone indication operates." insp._id 'asdindiv'}}}
+    {{{getRowYNNA "Exception: Operation of each individual alarm and supervisory zone indication gives the identical indication, or lights the identical indicators at the other annunciator(s) and sequential display(s)." insp._id 'asdexception'}}}
+    <tr>
+      <td colspan="4">{{{getValue "Specify Method of confirmation: " insp._id 'asdmethodofconfirmation' false}}}</td>
+    </tr>
+    {{{getRowYNNA "Minimum of one alarm zone and one supervisory zone tested per annunciator or sequential display to confirm operation." insp._id 'asdminimumonealarmzone'}}}
+    {{{getRowYNNA "C: Individual alarm and supervisory zone designation labels are properly identified." insp._id 'asdindivdesignationlabels'}}}
+    {{{getRowYNNA "D: Where active and supporting field devices are utilized, device labels shall be confirmed to correspond with actual field location." insp._id 'asdactivesupportingfield'}}}
+    {{{getRowYNNA "E: Common trouble signal operates." insp._id 'asdcommentrouble'}}}
+    {{{getRowYNNA "F: Visual indicator test (lamp test) operates." insp._id 'asdlamptest'}}}
+    {{{getRowYNNA "G: Input wiring from control unit or transponder is supervised." insp._id 'asdinputwiring'}}}
+    {{{getRowYNNA "H: Alarm signal silence visual indicator operates." insp._id 'asdsignalsilencevisual'}}}
+    {{{getRowYNNA "I: Switches for ancillary functions operate as per design and specification, or in accordance with documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures." insp._id 'asdswitches'}}}
+    {{{getRowYNNA "J: Ancillary function visual indicators operate." insp._id 'asdancillaryvisual'}}}
+    {{{getRowYNNA "K: Manual activation of alarm signal and indication operates." insp._id 'asdmanualactivationalarm'}}}
+    {{{getRowYNNA "L: Displays are visible in installed location." insp._id 'asddisplaysvisible'}}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+    Emergency Power Supply Test and Inspection<br/>
+    <span class="helper">Reference: Clauses 6.1.3, 6.3.2, 6.3.3</span>
+  </h1>
+  {{#if testNA insp._id 'emergencypowersupply'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "FA Panel/Control unit location: " insp._id 'epslocation' true}}}
+  {{{getValue "FA Panel/Control unit identification: " insp._id 'epsidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Correct battery type as recommended by manufacturer." insp._id 'epscorrectbatery'}}}
+    {{{getRowYNNA "B: Correct battery rating as determined by battery calculations based on full system load." insp._id 'epsbatteryrating'}}}
+    {{{getRowValueWithUnits "C: Battery voltage with main power supply ‘ON’." "" "V dc&nbsp;" insp._id 'epsbatteryvoltagepoweron'}}}
+    {{{getRowValueWithUnits "D: Battery voltage and current with main power supply ‘OFF’ and fire alarm system in supervisory condition." "Voltage" "V dc&nbsp;" insp._id 'epsbatteryvoltagepoweroffsuper'}}}
+    {{{getRowValueWithUnits "" "Current" "A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" insp._id 'epsbatterycurrentpoweroffsuper'}}}
+    {{{getRowValueWithUnits "E: Battery voltage and current with main power supply ‘OFF’ and fire alarm system in full load alarm condition." "Voltage" "V dc&nbsp;" insp._id 'epsbatteryvoltagepowerofffull'}}}
+    {{{getRowValueWithUnits "" "Current" "A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" insp._id 'epsbatterycurrentpowerofffull'}}}
+    {{{getRowValueWithUnits "F: Charging current on a fully charged battery." "" "A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" insp._id 'epschargingcurrentfull'}}}
+    {{{getRowYNNA "G: Free of Physical damage." insp._id 'epsphysicaldamage'}}}
+    {{{getRowYNNA "H: Terminals cleaned and lubricated." insp._id 'epsterminalslub'}}}
+    {{{getRowYNNA "I: Terminals clamped tightly." insp._id 'epsterminalsclamped'}}}
+    {{{getRowYNNA "J: Correct electrolyte level." insp._id 'epselectrolyte'}}}
+    {{{getRowYNNA "K: Specific gravity of electrolyte is within manufacturer’s specifications." insp._id 'epsspecificgravity'}}}
+    {{{getRowYNNA "L: Free of Electrolyte leakage." insp._id 'epselectrolyteleakage'}}}
+    {{{getRowYNNA "M: Adequate ventilation." insp._id 'epsventilation'}}}
+    {{{getRowValueWithUnits "N: Battery manufacturer’s date code or in-service date." "Date:" "&nbsp;" insp._id 'epsinservicedate'}}}
+    {{{getRowYNNA "O: Disconnection causes trouble signal" insp._id 'epsdisconnectiontrouble'}}}
+    <tr>
+      <td colspan="4">P: Indicate type of battery tests performed:</td>
+    </tr>
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(i) Required supervisory load for 24 h followed by the required full load operation; or" insp._id 'epssupervisory24h'}}}
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(ii) A silent test by using the load resistor method may be used for the full duration test (Refer to Appendix F1, Silent Test); or" insp._id 'epssilenttest'}}}
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(iii) Silent accelerated test. (Refer to Appendix F2, Silent Accelerated Test); or" insp._id 'epssilentacceltest'}}}
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(iv) A battery capacity meter test. (Refer to Appendix F3, Battery Capacity Meter Test); or" insp._id 'epscapcity'}}}
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(v) In lieu of the above battery tests, replace the battery with a new set having a current date code, amp-hour capacity, and of a type as recommended by the manufacturer of the fire alarm system." insp._id 'epslieu'}}}
+    {{{getRowForQ "Q: Record calculated battery capacity (Refer to Appendix F4.1-C)." "" "V dc&nbsp;" insp._id }}}
+    {{{getRowValueWithUnits "R: Record battery terminal voltage after completion of tests." "" "A h&nbsp;&nbsp;&nbsp;" insp._id 'epstermvoltage'}}}
+    {{{getRowYNNA "S: Battery voltage not less than 85% of its rating after the tests" insp._id 'eps85less'}}}
+    {{{getRowYNNA "T: Generator provides power to the AC circuit serving the fire alarm system." insp._id 'epsgenerator'}}}
+    {{{getRowYNNA "U: Trouble condition at the emergency generator shall result in an audible common trouble signal and a visual indication at the required annunciator." insp._id 'epstroublegenerator'}}}
+  </table>
+  {{/if}}
+
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+    Remote Trouble Signal Unit Test and Inspection<br/>
+    <span class="helper">Reference: Clauses 6.1.4, 6.4.3</span>
+  </h1>
+  {{#if testNA insp._id 'remotetroublesignal'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "Remote trouble signal unit location: " insp._id 'rtslocation' true}}}
+  {{{getValue "Remote trouble signal unit identification: " insp._id 'rtsidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Input wiring from control unit or transponder is supervised." insp._id 'rtsinputwiring'}}}
+    {{{getRowYNNA "B: Visual trouble signal operates." insp._id 'rtsvisualtrouble'}}}
+    {{{getRowYNNA "C: Audible trouble signal operates." insp._id 'rtsaudibletrouble'}}}
+    {{{getRowYNNA "D: Audible trouble signal silence operates." insp._id 'rtsaudiblesilence'}}}
+  </table>
+  {{/if}}
+
+  <h1 style="margin-top: 50px;">
+    Printer Test<br/>
+    <span class="helper">Reference: Clauses 6.1.4, 6.5.1</span>
+  </h1>
+  {{#if testNA insp._id 'printertest'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "Printer location: " insp._id 'ptlocation' true}}}
+  {{{getValue "Printer identification: " insp._id 'ptidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Operates as per design and specification, or in accordance with documentation as detailed in Appendix E, Description of Fire Alarm System for Inspection and Test Procedures." insp._id 'ptoperatesperdesign'}}}
+    {{{getRowYNNA "B: Zone of each alarm initiating device is correctly printed." insp._id 'ptzonealarminit'}}}
+    {{{getRowYNNA "C: Rated voltage is present." insp._id 'ptratedvoltage'}}}
+  </table>
+  {{/if}}
+
+  <h1 style="margin-top: 50px;">
+    Operation Test for Data Communication Link<br/>
+    <span class="helper">Reference: Clauses 6.1.5, 6.6-Note</span>
+  </h1>
+  {{#if testNA insp._id 'operationtest'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  {{{getValue "Control unit or transponder location: " insp._id 'otlocation' true}}}
+  {{{getValue "Control unit or transponder identification: " insp._id 'otidentification' true}}}
+  {{{getValue "Data communication link identification: " insp._id 'otlinkidentification' true}}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: Confirm that a trouble signal is received at the control unit or transponder under an open loop fault." insp._id 'otconfirmtroublesignal'}}}
+    {{{getRowYNNA "B: Where fault isolation modules are installed in data communication links serving field devices, wiring shall be shorted on the isolated side, annunciation of the fault confirmed, and then a field device on the source side shall be operated, and activation confirmed at the control unit or transponder." insp._id 'otfaultisolation'}}}
+    <tr>
+      <td colspan="4">C: Where fault isolation in data communication links is provided between
+      control units or transponders and between transponders, introduce a
+      short circuit fault and confirm annunciation of the fault and operation
+      outside the shorted section between each pair of:</td>
+    </tr>
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(i) Control unit to control unit" insp._id 'otcontroltocontrol'}}}
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(ii) Control unit to transponder" insp._id 'otcontroltotransponder'}}}
+    {{{getRowYNNA "&nbsp;&nbsp;&nbsp;&nbsp;(iii) Transponder to transponder" insp._id 'ottranspondertotransponder'}}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+  Interconnection to the Fire Signal Receiving Centre<br/>
+    <span class="helper">Reference: Clause 6.2.2.1</span>
+  </h1>
+  {{#if testNA insp._id 'interconnectionfiresignal'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "A: The fire signal receiving centre transmitter is integral to the fire alarm control unit." insp._id 'ifstxintegral'}}}
+    {{{getRowYNNA "B: An interconnection between the fire alarm control unit and a separate fire signal receiving centre transmitter is provided." insp._id 'ifscontrolunitseparate'}}}
+    {{{getRowYNNA "C: Tested and confirmed operation of alarm relay." insp._id 'ifstestedalarmrelay'}}}
+    {{{getRowYNNA "D: Tested and confirmed operation of trouble relay." insp._id 'ifstesttroublerelay'}}}
+    {{{getRowYNNA "E: Tested and confirmed operation of supervisory relay." insp._id 'ifstestedsuperrelay'}}}
+    {{{getRowYNNA "F: Confirm receipt of the alarm transmission to the fire signal receiving centre is received." insp._id 'ifsconfirmreceiptalar'}}}
+    {{{getRowYNNA "G: Confirm receipt of the supervisory transmission to the fire signal receiving centre is received." insp._id 'ifsconfirmsupertrans'}}}
+    {{{getRowYNNA "H: Confirm receipt of the trouble transmission to the fire signal receiving centre is received." insp._id 'ifsconfirmtroublereceipt'}}}
+    {{{getRowYNNA "I: Operation of the fire signal receiving centre disconnect means results in a specific trouble indication at the control unit or transponder and transmits a trouble signal to the fire signal receiving centre." insp._id 'ifsoperationdisconnect'}}}
+    {{{getRowValueWithUnits "If connected, record the name and telephone number of the fire signal receiving centre." "Name<br/>" "" insp._id 'ifsrxname'}}}
+    {{{getRowValueWithUnits "" "Phone<br/>" "" insp._id 'ifsrxphone'}}}
+  </table>
+  {{/if}}
+
+  <h1 style="margin-top: 50px;">
+    Ancillary Device Unit Tests<br/>
+    <span class="helper">Reference: Clauses 6.2.2.1(Z)</span>
+  </h1>
+  {{#if testNA insp._id 'ancillarydeviceunit'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td style="border-bottom: none;"></td>
+      <td colspan="2" class="label"><div class="align-center">Operation Confirmed</div></td>
+    </tr>
+    <tr>
+      <td width="84%"><label>Type of Ancillary Circuit</label></td>
+      <td width="8%"><div class="align-center">Y</div></td>
+      <td width="8%"><div class="align-center">N</div></td>
+    </tr>
+    {{#each getForms insp._id 'ancillarydeviceunit'}}
+      {{{getListRowYN}}}
+    {{/each}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">
+    Legend
+  </h1>
+  <div style="float: right; width: 40%;">
+    <table width="100%">
+      <tr>
+        <td width="25%"><div class="label align-center">Abbr.</div></td>
+        <td width="75%"><label>Description</label></td>
+      </tr>
+      <tr>
+        <td><div class="align-center">C</div></td>
+        <td>Correctly installed</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">M</div></td>
+        <td>Missing</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">R</div></td>
+        <td>Requires service or repair</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">A</div></td>
+        <td>Alarm operation confirmed</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">N</div></td>
+        <td>Annunciation</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">S</div></td>
+        <td>Supervision of wiring</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">G</div></td>
+        <td>Ground</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">CCT#</div></td>
+        <td>Circuit number</td>
+      </tr>
+    </table><br/>
+    <br/>
+    <table width="100%">
+      <tr>
+        <td width="25%"><div class="label align-center">Abbr.</div></td>
+        <td width="75%"><label>Description</label></td>
+      </tr>
+      <tr>
+        <td><div class="align-center"><span class='green'>&#10004;</span></div></td>
+        <td>Test OK</td>
+      </tr>
+      <tr>
+        <td><div class="align-center"><span class='red'>&#10006;</span></div></td>
+        <td>Test not OK</td>
+      </tr>
+      <tr>
+        <td><div class="align-center">&#10134;</div></td>
+        <td>Not tested</td>
+      </tr>
+    </table>
+  </div>
+  <table width="55%">
+    <tr>
+      <td width="20%"><div class="label align-center">Device</div></td>
+      <td width="80%"><label>Description</label></td>
+    </tr>
+    <tr>
+      <td><div class="align-center">M</div></td>
+      <td>Manual Pull Station</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">HT</div></td>
+      <td>Heat Detector - Fixed Temperature</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">RHT</div></td>
+      <td>Heat Detector - Rate of Rise</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">S</div></td>
+      <td>Smoke Detector</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">DS</div></td>
+      <td>Duct Smoke Detector</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">FS</div></td>
+      <td>Sprinkler Flow Switch <sup>**1</sup></td>
+    </tr>
+    <tr>
+      <td><div class="align-center">TS</div></td>
+      <td>Sprinkler Tamper Switch <sup>**2</sup></td>
+    </tr>
+    <tr>
+      <td><div class="align-center">PS</div></td>
+      <td>Sprinkler Pressure Switch</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">SA</div></td>
+      <td>Smoke Alarm Single Station Type <sup>**3</sup></td>
+    </tr>
+    <tr>
+      <td><div class="align-center">B</div></td>
+      <td>Bell</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">K</div></td>
+      <td>Horn (Klaxon Type)</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">C</div></td>
+      <td>Chime</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">V</div></td>
+      <td>Visual Alarm Appliance</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">SP</div></td>
+      <td>Loudspeaker</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">HSP</div></td>
+      <td>Horn Loudspeaker</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">T</div></td>
+      <td>Fire Fighters Telephone</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">AD</div></td>
+      <td>Ancillary Devices <sup>**4</sup></td>
+    </tr>
+    <tr>
+      <td><div class="align-center">EOL</div></td>
+      <td>End of Line resistor</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">BP</div></td>
+      <td>Booster Panel</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">EXIT</div></td>
+      <td>Exit Light</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">CP</div></td>
+      <td>Combo Pack</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">BP</div></td>
+      <td>Battery Pack</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">RHD</div></td>
+      <td>Double Remote Head</td>
+    </tr>
+    <tr>
+      <td><div class="align-center">RHS</div></td>
+      <td>Single Remote Head</td>
+    </tr>
+  </table>
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="margin-top: 100px;">Notes</h1>
+  <ol>
+    <li>All zones are inspected for trouble and ground supervision on applicable panels.</li>
+    <li>Delay of Flow indicated in the remarks column for sprinkler flow switches.</li>
+    <li>Trouble conditions are annunciated but not given an alarm condition for sprinkler tamper switches.</li>
+    <li>Single station smoke alarms are not part of the fire alarm system but may require testing by the fire authority.</li>
+    <li>Specifice ancillary devices indicated in the remarks column.</li>
+    <li>Confimation of wiring to each device is only required during installation verification or a completebuilding audit of the system and is not required at an anual test.</li>
+    <li>Smoke detector sensitivity confirmation or measurements should be record in the remarks column.</li>
+    <li>Smoke detector cleaning or replacement date should be record in the remarks column.</li>
+    <li>Status Change, including time delay, should be record in the remarks column.</li>
+    <li>Duct smoke detector pressure differentials should be confirmed and recorded in the remarks column.</li>
+    <li>Time delay settings of water flow switch should be recored in the remarks column.</li>
+    <li>Sprinkler supervisory switches cause trouble condition to be annunciated but not an alarm condition.</li>
+    <li>Upper and lower pressure setting of supervisory devices should be recored in the remarks column.</li>
+    <li>Low temperature setting should be recored in the remarks column.</li>
+    <li>Identity the specific ancillary devices in the remarks column.</li>
+    <li>Identify date field devices changed in the remarks column.</li>
+    <li>Identify correct field device operation (e.g., alarm, trouble, supervisory, annunciation indication).</li>
+    <li>Identify zone, circuit number or address.</li>
+    <li>Identify conventional field device locations.</li>
+    <li>Identify active field device and supporting filed device, data communications link (DCL), address and locations.</li>
+    <li>Test and confirm conventional field devices supervision of wiring.</li>
+    <li>Confirm field device free of damage.</li>
+    <li>Confirm field device free of foreign substance.</li>
+    <li>Confirm field device mechanically supported independently of wiring.</li>
+    <li>Confirm field device protective dust shields or covers are present.</li>
+    <li>"Correctly Installed" refers to the version of Can/ULC-S524, Standard for Installation of Fire Alarm Systems,
+applicable at the time of installation of the device being used.</li>
+  </ol>
+  CAUTION : The tests reported on this form do not include the actual operational test of ancillary devices.
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <table style="width: 100%; margin-top: 100px;">
+    <tr>
+      <th width="5%">#</th>
+      <th width="5%">Device</th>
+      <th width="15%">CCT#</th>
+      <th width="15%">Location</th>
+      <th width="5%">C</th>
+      <th width="5%">M</th>
+      <th width="5%">R</th>
+      <th width="5%">A</th>
+      <th width="5%">N</th>
+      <th width="5%">S</th>
+      <th width="5%">G</th>
+      <th width="25%">Remarks</th>
+    </tr>
+    {{#each getFormsWithIndex insp._id 'firealarminspection'}}
+    <tr>
+      <td><div class="align-center">{{index}}</div></td>
+      <td><div class="align-center">{{deviceInitial value.type}}</div></td>
+      <td><div class="align-center">{{value.cct}}</div></td>
+      <td><div class="align-center">{{value.location}}</div></td>
+      <td><div class="align-center">{{{isCorrectlyInstalled value.state}}}</div></td>
+      <td><div class="align-center">{{{isMissing value.state}}}</div></td>
+      <td><div class="align-center">{{{isRequiringMaintenance value.state}}}</div></td>
+      <td><div class="align-center">{{{isAlarmConfirmed value.alarmconfirmed}}}</div></td>
+      <td><div class="align-center">{{{isYesNoNotTested value.annunciator}}}</div></td>
+      <td><div class="align-center">{{{isYesNoNotTested value.supervisionwiring}}}</div></td>
+      <td><div class="align-center">{{{isYesNoNotTested value.ground}}}</div></td>
+      <td></td>
+    </tr>
+    {{/each}}
+  </table>
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="width: 100%; margin-top: 100px;">Signalling Device Sound Level Measurements</h1>
+  {{#if testNA insp._id 'signallingdevicesound'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table style="width: 100%;">
+    <tr>
+      <th width="5%">#</th>
+      <th width="5%">Device</th>
+      <th width="15%">CCT#</th>
+      <th width="15%">Location</th>
+      <th width="15%">Ambient dB</th>
+      <th width="15%">Signal dB</th>
+      <th width="30%">Remarks</th>
+    </tr>
+    {{#each getFormsWithIndex insp._id 'signallingdevicesound'}}
+    <tr>
+      <td><div class="align-center">{{index}}</div></td>
+      <td><div class="align-center">{{deviceInitial value.type}}</div></td>
+      <td><div class="align-center">{{value.cct}}</div></td>
+      <td><div class="align-center">{{value.location}}</div></td>
+      <td><div class="align-center">{{value.ambientdb}}</div></td>
+      <td><div class="align-center">{{value.signaldb}}</div></td>
+      <td><div class="align-center"></div></td>
+      <td></td>
+    </tr>
+    {{/each}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="width: 100%; margin-top: 100px;">Annual Emergency Lighting System Test and Inspection Report</h1>
+  {{#if testNA insp._id 'emlighting'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table style="width: 100%;">
+    <tr>
+      <th width="5%">#</th>
+      <th width="5%">Device</th>
+      <th width="20%">Location</th>
+      <th width="5%">C</th>
+      <th width="5%">M</th>
+      <th width="5%">R</th>
+      <th width="55%">Remarks</th>
+    </tr>
+    {{#each getFormsWithIndex insp._id 'emlighting'}}
+    <tr>
+      <td><div class="align-center">{{index}}</div></td>
+      <td><div class="align-center">{{deviceInitial value.type}}</div></td>
+      <td><div class="align-center">{{value.location}}</div></td>
+      <td><div class="align-center">{{{isCorrectlyInstalled value.state}}}</div></td>
+      <td><div class="align-center">{{{isMissing value.state}}}</div></td>
+      <td><div class="align-center">{{{isRequiringMaintenance value.state}}}</div></td>
+      <td><div class="align-center"></div></td>
+      <td></td>
+    </tr>
+    {{/each}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="width: 100%; margin-top: 100px;">Deficiencies</h1>
+  <ul>
+    {{#each getInspectionItems insp._id 'deficiency'}}
+    <li>{{text}}</li>
+    {{/each}}
+  </ul>
+
+  <h1 style="width: 100%; margin-top: 100px;">Comments</h1>
+  <ul>
+    {{#each getInspectionItems insp._id 'comment'}}
+    <li>{{text}}</li>
+    {{/each}}
+  </ul>
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="width: 100%; margin-top: 100px;">Recommendations</h1>
+  <ul>
+    {{#each getInspectionItems insp._id 'recommendation'}}
+    <li>{{text}}</li>
+    {{/each}}
+  </ul>
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="width: 100%; margin-top: 100px;">After Test Report Card</h1>
+  {{#if testNA insp._id 'aftertestreport'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "Reconnected auxillary functions? (monitoring)" insp._id 'atrreconnectmonitoring'}}}
+    {{{getRowYNNA "Reconnected ancillary functions?" insp._id 'atrancillary'}}}
+    {{{getRowYNNA "Reconnected time limit cutouts?" insp._id 'atrreconnecttimelimit'}}}
+    {{{getRowYNNA "Ensured Fire Alarm System is on normal power?" insp._id 'atrsystemnormalpower'}}}
+    {{{getRowYNNA "Advised building management that work is complete?" insp._id 'atradvisebuildingmanage'}}}
+    {{{getRowYNNA "Advised Fire Department that work is complete?" insp._id 'atradvisefiredept'}}}
+    {{{getRowYNNA "Ensured Fire Alarm System is functional?" insp._id 'atrfasfunctional'}}}
+    {{{getRowYNNA "Is there a Fire Department Key Box installed in an approved location?" insp._id 'atrfireboxinstall'}}}
+    {{{getRowValueWithUnits "Key box location:" "" "" insp._id 'atrkeylocation'}}}
+  </table>
+  {{/if}}
+
+  <h1 style="width: 100%; margin-top: 100px;">Last Inspection Date</h1>
+  {{#if testNA insp._id 'lastinspectiondate'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "Fire Alarm System" insp._id 'lidfas'}}}
+    {{{getRowValueWithUnits "&nbsp;&nbsp;&nbsp;Date Inspected:" "" "" insp._id 'lidfasdate'}}}
+    {{{getRowYNNA "Fire Hoses" insp._id 'lidhose'}}}
+    {{{getRowValueWithUnits "&nbsp;&nbsp;&nbsp;Date Inspected:" "" "" insp._id 'lidhosedate'}}}
+    {{{getRowYNNA "Sprinkler System" insp._id 'lidsprinkler'}}}
+    {{{getRowValueWithUnits "&nbsp;&nbsp;&nbsp;Date Inspected:" "" "" insp._id 'lidsprinklerdate'}}}
+    {{{getRowYNNA "Emergency Generator" insp._id 'lidgenerator'}}}
+    {{{getRowValueWithUnits "&nbsp;&nbsp;&nbsp;Date Inspected:" "" "" insp._id 'lidgeneratordate'}}}
+    {{{getRowYNNA "Emergency Lights" insp._id 'lidlights'}}}
+    {{{getRowValueWithUnits "&nbsp;&nbsp;&nbsp;Date Inspected:" "" "" insp._id 'lidlightsdate'}}}
+    {{{getRowYNNA "Other Systems" insp._id 'lidother'}}}
+    {{{getRowValueWithUnits "&nbsp;&nbsp;&nbsp;Date Inspected:" "" "" insp._id 'lidotherdate'}}}
+  </table>
+  {{/if}}
+
+  <div class="pagebreaker">&nbsp;</div>
+  <!-- Page Break -->
+
+  <h1 style="width: 100%; margin-top: 100px;">Summary</h1>
+  {{#if testNA insp._id 'summary'}}
+  <div class="align-center">
+    This section is not applicable to this inspection, and has been intentionally omitted.<br/>
+    <span class="label">-- end --</span>
+  </div>
+  {{else}}
+  <table width="100%">
+    <tr>
+      <td width="85%"></td>
+      <td width="5%"><div class="align-center">Y</div></td>
+      <td width="5%"><div class="align-center">N</div></td>
+      <td width="5%"><div class="align-center">N/A</div></td>
+    </tr>
+    {{{getRowYNNA "The Fire Alarm System is now <b>fully</b> functional" insp._id 'sumfasfunctional'}}}
+    {{{getRowYNNA "The Fire Alarm System has <b>minor deficiencies</b> as noted in this report" insp._id 'sumfasminor'}}}
+    {{{getRowYNNA "The Fire Alarm System has <b>major deficiencies</b> as noted in this report" insp._id 'sumfasmajor'}}}
+    {{{getRowYNNA "All Fire Extinguishers are in place." insp._id 'sumextinguishersinplace'}}}
+    {{{getRowYNNA "Fire Extinguishers require maintenance." insp._id 'sumextinguishersmaintenance'}}}
+    {{{getRowYNNA "The Sprinkler System is now <b>fully</b> functional" insp._id 'sumsprinkfunctional'}}}
+    {{{getRowYNNA "The Sprinkler System has <b>minor deficiencies</b> as noted in this report." insp._id 'sumsprinkminor'}}}
+    {{{getRowYNNA "The Sprinler System has <b>major deficiencies</b> as noted in this report." insp._id 'sumsprinkmajor'}}}
+    {{{getRowYNNA "The Sprinkler System requires maintenance." insp._id 'sumsprinkmaintenance'}}}
+    {{{getRowYNNA "The Emergancy Generator is now <b>fully</b> functional." insp._id 'sumgenfunctional'}}}
+    {{{getRowYNNA "The Emergancy Generator has <b>minor deficiencies</b> as noted in this report." insp._id 'sumgenminor'}}}
+    {{{getRowYNNA "The Emergancy Generator has <b>major deficiencies</b> as noted in this report." insp._id 'sumgenmajor'}}}
+    {{{getRowYNNA "The Emergancy Generator requires maintenance." insp._id 'sumgenmaintenance'}}}
+    {{{getRowYNNA "The Emergancy Lights are now <b>fully</b> functional." insp._id 'sumlightsfunctional'}}}
+    {{{getRowYNNA "The Emergancy Lights have <b>minor deficiencies</b> as noted in this report." insp._id 'sumlightsminor'}}}
+    {{{getRowYNNA "The Emergancy Lights have <b>major deficiencies</b> as noted in this report." insp._id 'sumlightsmajor'}}}
+    {{{getRowYNNA "The Emergancy Lights require maintenance." insp._id 'sumlightsmaintenance'}}}
+    {{{getRowYNNA "Additonal notes have been attached." insp._id 'sumnotes'}}}
+    {{{getRowYNNA "A copy of this report has been sent to:" insp._id 'sumnsent'}}}
+    {{{getRowValueWithUnits "" "email" "" insp._id 'sumemail'}}}
+    {{{getRowValueWithUnits "" "fax" "" insp._id 'sumfax'}}}
+  </table>
+  {{/if}}
+
+  <p style="margin-top: 50px;">The information on this form (and in the documents attached here-to) attest to the fact that the
+    equipment listed here-in was tested/inspected in conformance with applicable codes, bylaws, standards
+    and the manufacturer's requirements by a qualified technician. The equipment was left in an operational
+    condition except as noted in the remarks, deficiencies, recomendations and notes areas. This document
+    has been provided to the building representitive who has acknowledged receipt of same below. Any
+    changes made to the systems by others will not be the responsibility of Associated.</p>
+  <p>Final certification will be issued once all deficiencies are rectified.</p>
+
+</body>
+</html>

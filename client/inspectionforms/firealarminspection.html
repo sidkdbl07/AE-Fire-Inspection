@@ -1,0 +1,290 @@
+<template name="firealarminspection">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <div class="float-right">
+        Sort by:
+        <a href="#" class="btn {{#if isSortedBy 'device'}}btn-primary{{else}}btn-default{{/if}} sort" sortby="device">Device Type</a>
+        <a href="#" class="btn {{#if isSortedBy 'location'}}btn-primary{{else}}btn-default{{/if}} sort" sortby="location">Location</a>
+      </div>
+      <h2>Fire Alarm System Inspection</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="float-right"><a href="#" class="btn btn-default" id="addfasdevice">Add / Save</a></div>
+          <div class="panel-heading">Add a Device</div>
+        </div>
+        <div class="panel-body" style="height: 520px; max-height: 520px; overflow-y: hidden;">
+          <div class="question-text">
+            Type of Device<br/>
+            <div class="form-group float-right">
+              <select class="form-control" name="fasitype" id="fasitype">
+                {{#each getDeviceTypes}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            &nbsp;
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 50%;">
+              <input type="text" class="form-control textfield" name="fasicct" id="fasicct" />
+            </div>
+            CCT Number
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 50%;">
+              <input type="text" class="form-control textfield" name="fasilocation" id="fasilocation" />
+            </div>
+            Location
+          </div>
+          <div class="question-text">
+            State of Device<br/>
+            <div class="form-group float-right">
+              <select class="form-control" name="fasistate" id="fasistate">
+                {{#each getDeviceStates}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            &nbsp;
+          </div>
+          <div class="question-text">
+            <div class="btn-group float-right" data-toggle="buttons" id="fasialarmconfirmed">
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasialarmconfirmed_yes" id="fasialarmconfirmed_Yes"> Yes
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasialarmconfirmed_no" id="fasialarmconfirmed_No"> No
+              </label>
+            </div>
+            Alarm Operation Confirmed
+          </div>
+          <div class="question-text">
+            Annunciator<br/>
+            <div class="btn-group float-right" data-toggle="buttons" id="fasiannunciator">
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasiannunciator_ok" id="fasiannunciator_OK"> Test OK
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasiannunciator_notok" id="fasiannunciator_Not OK"> Test Not OK
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasiannunciator_nottested" id="fasiannunciator_Not Tested"> Not Tested
+              </label>
+            </div>
+            &nbsp;
+          </div>
+          <div class="question-text">
+            Supervision of Wiring<br/>
+            <div class="btn-group float-right" data-toggle="buttons" id="fasisupervisionwiring">
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasisupervisionwiring_ok" id="fasisupervisionwiring_OK"> Test OK
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasisupervisionwiring_notok" id="fasisupervisionwiring_Not OK"> Test Not OK
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasisupervisionwiring_nottested" id="fasisupervisionwiring_Not Tested"> Not Tested
+              </label>
+            </div>
+            &nbsp;
+          </div>
+          <div class="question-text">
+            Ground<br/>
+            <div class="btn-group float-right" data-toggle="buttons" id="fasiground">
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasiground_ok" id="fasiground_OK"> Test OK
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasiground_notok" id="fasiground_Not OK"> Test Not OK
+              </label>
+              <label class="btn btn-default">
+                <input type="radio" class="radiobutton addedit" name="fasiground_nottested" id="fasiground_Not Tested"> Not Tested
+              </label>
+            </div>
+            &nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7 col-xs-12">
+      {{#if isDevices}}
+      <div class="list-of-devices">
+        <ul class="list-group">
+          {{#each getDevices}}
+            <li class="list-group-item">
+              <div class="float-right" style="white-space: nowrap; text-align: right;">
+                <a href="#" class="btn btn-danger btn-xs deleteform" style="display: inline-block" formid="{{_id}}"><i class="fa fa-times"></i></a><br/>
+                <br/>
+                <a href="#" class="btn btn-default btn-xs deficienciesform" style="display: inline-block; margin-right: 10px; border: none;" formid="{{_id}}"><i class="fa fa-flag"></i>
+                  {{#if isDeficiencies _id}}<span class="badge">{{numDeficiencies _id}}</span>{{/if}}
+                </a>
+                <a href="#" class="btn btn-primary btn-xs editform" style="display: inline-block" formid="{{_id}}"><i class="fa fa-pencil"></i></a>
+              </div>
+              {{value.type}} {{formatCCT value.cct}} {{value.location}}<br/>
+              &nbsp;&nbsp;{{{formatState value.state}}}<br/>
+              <table style="width: 80%">
+                <tr>
+                  <td>{{{formatStatus 'Alarm Confirmed' value.alarmconfirmed}}}</td>
+                  <td>{{{formatStatus 'Annunciator' value.annunciator}}}</td>
+                </tr>
+                <tr>
+                  <td>{{{formatStatus 'Sup. of Wiring' value.supervisionwiring}}}</td>
+                  <td>{{{formatStatus 'Ground' value.ground}}}</td>
+                </tr>
+              </table>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{else}}
+        <div style="margin: auto; width: 100%;">No devices have been added</div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div id="edit-device" class="insp-right-form">
+    <div class="row">
+      <div class="insp-right-form-header">Edit Device</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        {{#with selectedDevice}}
+        <div class="question-text">
+          Type of Device<br/>
+          <div class="form-group float-right">
+            <select id="editfasitype" name="editfasitype" class="form-control">
+              {{#each getDeviceTypes}}
+                {{{optionType this}}}
+              {{/each}}
+            </select>
+          </div>
+          &nbsp;
+        </div>
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editfasicct" id="editfasicct" value="{{value.cct}}" />
+          </div>
+          CCT Number
+        </div>
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editfasilocation" id="editfasilocation" value="{{value.location}}" />
+          </div>
+          Location
+        </div>
+        <div class="question-text">
+          State of Device<br/>
+          <div class="form-group float-right">
+            <select class="form-control" name="editfasistate" id="editfasistate">
+              {{#each getDeviceStates}}
+                {{{optionState this}}}
+              {{/each}}
+            </select>
+          </div>
+          &nbsp;
+        </div>
+        <div class="question-text">
+          <div class="btn-group float-right" data-toggle="buttons" id="editfasialarmconfirmed">
+            <label class="btn btn-default {{#if radioSelected 'alarmconfirmed' 'Yes'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasialarmconfirmed_yes" id="editfasialarmconfirmed_Yes"> Yes
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'alarmconfirmed' 'No'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasialarmconfirmed_no" id="editfasialarmconfirmed_No"> No
+            </label>
+          </div>
+          Alarm Operation Confirmed
+        </div>
+        <div class="question-text">
+          Annunciator<br/>
+          <div class="btn-group float-right" data-toggle="buttons" id="editfasiannunciator">
+            <label class="btn btn-default {{#if radioSelected 'annunciator' 'OK'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasiannunciator_ok" id="editfasiannunciator_OK"> Test OK
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'annunciator' 'Not OK'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasiannunciator_notok" id="editfasiannunciator_Not OK"> Test Not OK
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'annunciator' 'Not Tested'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasiannunciator_nottested" id="fasiannunciator_Not Tested"> Not Tested
+            </label>
+          </div>
+          &nbsp;
+        </div>
+        <div class="question-text">
+          Supervision of Wiring<br/>
+          <div class="btn-group float-right" data-toggle="buttons" id="editfasisupervisionwiring">
+            <label class="btn btn-default {{#if radioSelected 'supervisionwiring' 'OK'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasisupervisionwiring_ok" id="editfasisupervisionwiring_OK"> Test OK
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'supervisionwiring' 'Not OK'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasisupervisionwiring_notok" id="editfasisupervisionwiring_Not OK"> Test Not OK
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'supervisionwiring' 'Not Tested'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasisupervisionwiring_nottested" id="editfasisupervisionwiring_Not Tested"> Not Tested
+            </label>
+          </div>
+          &nbsp;
+        </div>
+        <div class="question-text">
+          Ground<br/>
+          <div class="btn-group float-right" data-toggle="buttons" id="editfasiground">
+            <label class="btn btn-default {{#if radioSelected 'ground' 'OK'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasiground_ok" id="editfasiground_OK"> Test OK
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'ground' 'Not OK'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasiground_notok" id="editfasiground_Not OK"> Test Not OK
+            </label>
+            <label class="btn btn-default {{#if radioSelected 'ground' 'Not Tested'}}active{{/if}}">
+              <input type="radio" class="radiobutton addedit" name="editfasiground_nottested" id="editfasiground_Not Tested"> Not Tested
+            </label>
+          </div>
+          &nbsp;
+        </div>
+        {{/with}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary" id="editformbtn">Save</a>
+        <a href="#" class="btn btn-default" id="canceleditformbtn">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="add-deficiency" class="insp-right-form">
+    <div class="row">
+      <div class="insp-right-form-header">Deficiencies</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="comment-text">New Deficiency</label>
+            <div class="input-group" style="width: 90%;">
+              <textarea rows=6 style="width: 100%;" id="newformdeficiency" name="newformdeficiency"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary" id="adddeficiencybtn">Save</a>
+        <a href="#" class="btn btn-default" id="canceladddeficiencybtn">Cancel</a>
+      </div>
+    </div>
+
+    <div class="row" style="height: 50%; overflow-y: auto; margin-top: 20px;">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <ul class="list-group">
+        {{#each getFormDeficiencies}}
+          <li class="list-group-item">{{text}}</li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

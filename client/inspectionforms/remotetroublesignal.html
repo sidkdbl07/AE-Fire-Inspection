@@ -1,0 +1,79 @@
+<template name="remotetroublesignal">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Remote Trouble Signal Unit Test and Inspection</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="rtslocation" id="rtslocation" value="{{getValue 'rtslocation'}}" />
+        </div>
+        Remote trouble signal unit location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="rtsidentification" id="rtsidentification" value="{{getValue 'rtsidentification'}}" />
+        </div>
+        Remote trouble signal unit identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'rtsinputwiring_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsinputwiring" id="rtsinputwiring_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'rtsinputwiring_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsinputwiring" id="rtsinputwiring_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'rtsinputwiring_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsinputwiring" id="rtsinputwiring_N/A"> N/A
+          </label>
+        </div>
+        A:  Input wiring from control unit or transponder is supervised.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'rtsvisualtrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsvisualtrouble" id="rtsvisualtrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'rtsvisualtrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsvisualtrouble" id="rtsvisualtrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'rtsvisualtrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsvisualtrouble" id="rtsvisualtrouble_N/A"> N/A
+          </label>
+        </div>
+        B: Visual trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'rtsaudibletrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsaudibletrouble" id="rtsaudibletrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'rtsaudibletrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsaudibletrouble" id="rtsaudibletrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'rtsaudibletrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsaudibletrouble" id="rtsaudibletrouble_N/A"> N/A
+          </label>
+        </div>
+        C: Audible trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'rtsaudiblesilence_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsaudiblesilence" id="rtsaudiblesilence_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'rtsaudiblesilence_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsaudiblesilence" id="rtsaudiblesilence_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'rtsaudiblesilence_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="rtsaudiblesilence" id="rtsaudiblesilence_N/A"> N/A
+          </label>
+        </div>
+        D: Audible trouble signal silence operates.
+      </div>
+    </div>
+  </div>
+</template>

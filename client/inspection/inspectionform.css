@@ -1,0 +1,28 @@
+.btn.sort {
+  margin-bottom: 4px;
+  margin-left: 5px;
+}
+
+.datepicker {
+  border: 1px solid #999;
+}
+
+.float-right {
+  float: right;
+  margin-left: 10px;
+}
+
+.question-text {
+  margin-bottom: 30px;
+  color: #888;
+}
+
+.list-of-devices {
+  height: 550px;
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
+.panel-heading {
+  padding: 5px 15px;
+}

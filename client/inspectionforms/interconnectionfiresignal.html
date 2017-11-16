@@ -1,0 +1,153 @@
+<template name="interconnectionfiresignal">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Interconnection to the Fire Signal Receiving Centre</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifstxintegral_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstxintegral" id="ifstxintegral_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifstxintegral_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstxintegral" id="ifstxintegral_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifstxintegral_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstxintegral" id="ifstxintegral_N/A"> N/A
+          </label>
+        </div>
+        A: The fire signal receiving centre transmitter is integral to the fire alarm control unit.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifscontrolunitseparate_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifscontrolunitseparate" id="ifscontrolunitseparate_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifscontrolunitseparate_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifscontrolunitseparate" id="ifscontrolunitseparate_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifscontrolunitseparate_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifscontrolunitseparate" id="ifscontrolunitseparate_N/A"> N/A
+          </label>
+        </div>
+        B: An interconnection between the fire alarm control unit and a separate fire signal receiving centre transmitter is provided.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifstestedalarmrelay_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstestedalarmrelay" id="ifstestedalarmrelay_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifstestedalarmrelay_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstestedalarmrelay" id="ifstestedalarmrelay_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifstestedalarmrelay_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstestedalarmrelay" id="ifstestedalarmrelay_N/A"> N/A
+          </label>
+        </div>
+        C: Tested and confirmed operation of alarm relay.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifstesttroublerelay_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstesttroublerelay" id="ifstesttroublerelay_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifstesttroublerelay_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstesttroublerelay" id="ifstesttroublerelay_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifstesttroublerelay_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstesttroublerelay" id="ifstesttroublerelay_N/A"> N/A
+          </label>
+        </div>
+        D: Tested and confirmed operation of trouble relay.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifstestedsuperrelay_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstestedsuperrelay" id="ifstestedsuperrelay_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifstestedsuperrelay_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstestedsuperrelay" id="ifstestedsuperrelay_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifstestedsuperrelay_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifstestedsuperrelay" id="ifstestedsuperrelay_N/A"> N/A
+          </label>
+        </div>
+        E: Tested and confirmed operation of supervisory relay.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifsconfirmreceiptalarm_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmreceiptalarm" id="ifsconfirmreceiptalarm_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifsconfirmreceiptalarm_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmreceiptalarm" id="ifsconfirmreceiptalarm_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifsconfirmreceiptalarm_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmreceiptalarm" id="ifsconfirmreceiptalarm_N/A"> N/A
+          </label>
+        </div>
+        F: Confirm receipt of the alarm transmission to the fire signal receiving centre is received.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifsconfirmsupertrans_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmsupertrans" id="ifsconfirmsupertrans_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifsconfirmsupertrans_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmsupertrans" id="ifsconfirmsupertrans_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifsconfirmsupertrans_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmsupertrans" id="ifsconfirmsupertrans_N/A"> N/A
+          </label>
+        </div>
+        G: Confirm receipt of the supervisory transmission to the fire signal receiving centre is received.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifsconfirmtroublereceipt_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmtroublereceipt" id="ifsconfirmtroublereceipt_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifsconfirmtroublereceipt_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmtroublereceipt" id="ifsconfirmtroublereceipt_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifsconfirmtroublereceipt_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsconfirmtroublereceipt" id="ifsconfirmtroublereceipt_N/A"> N/A
+          </label>
+        </div>
+        H: Confirm receipt of the trouble transmission to the fire signal receiving centre is received.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ifsoperationdisconnect_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsoperationdisconnect" id="ifsoperationdisconnect_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ifsoperationdisconnect_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsoperationdisconnect" id="ifsoperationdisconnect_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ifsoperationdisconnect_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ifsoperationdisconnect" id="ifsoperationdisconnect_N/A"> N/A
+          </label>
+        </div>
+        I: Operation of the fire signal receiving centre disconnect
+        means results in a specific trouble indication at the control
+        unit or transponder and transmits a trouble signal to the fire
+        signal receiving centre.
+      </div>
+      <div class="question-text">
+        If connected, record the name and telephone number of the fire signal receiving centre.<br/>
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="ifsrxname" id="ifsrxname" value="{{getValue 'ifsrxname'}}" />
+        </div>
+        Name:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 500px;" name="ifsrxphone" id="ifsrxphone" value="{{getValue 'ifsrxphone'}}" />
+        </div>
+        Telephone:
+      </div>
+    </div>
+  </div>
+</template>

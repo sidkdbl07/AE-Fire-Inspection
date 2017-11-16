@@ -1,0 +1,159 @@
+<template name="emlighting">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <div class="float-right">
+        Sort by:
+        <a href="#" class="btn {{#if isSortedBy 'device'}}btn-primary{{else}}btn-default{{/if}} sort" sortby="device">Device Type</a>
+        <a href="#" class="btn {{#if isSortedBy 'location'}}btn-primary{{else}}btn-default{{/if}} sort" sortby="location">Location</a>
+      </div>
+      <h2>EM Lighting</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-5 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-heading">Add a Device</div>
+        </div>
+        <div class="panel-body">
+          <div class="question-text">
+            Type of Device<br/>
+            <div class="form-group float-right">
+              <select class="form-control" name="emltype" id="emltype">
+                {{#each getDeviceTypes}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            &nbsp;
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 50%;">
+              <input type="text" class="form-control textfield" name="emllocation" id="emllocation" />
+            </div>
+            Location
+          </div>
+          <div class="question-text">
+            State of Device<br/>
+            <div class="form-group float-right">
+              <select class="form-control" name="emlstate" id="emlstate">
+                {{#each getDeviceStates}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            &nbsp;
+          </div>
+        </div>
+        <div class="panel-footer" style="text-align: right;">
+          <a href="#" class="btn btn-primary" id="addemldevice">Add</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7 col-xs-12">
+      {{#if isDevices}}
+      <div class="list-of-devices">
+        <ul class="list-group">
+          {{#each getDevices}}
+            <li class="list-group-item">
+              <div class="float-right" style="white-space: nowrap; text-align: right;">
+                <a href="#" class="btn btn-danger btn-xs deleteform" style="display: inline-block" formid="{{_id}}"><i class="fa fa-times"></i></a><br/>
+                <br/>
+                <a href="#" class="btn btn-default btn-xs deficienciesform" style="display: inline-block; margin-right: 10px; border: none;" formid="{{_id}}"><i class="fa fa-flag"></i>
+                  {{#if isDeficiencies _id}}<span class="badge">{{numDeficiencies _id}}</span>{{/if}}
+                </a>
+                <a href="#" class="btn btn-primary btn-xs editform" style="display: inline-block" formid="{{_id}}"><i class="fa fa-pencil"></i></a>
+              </div>
+              {{value.type}}: {{value.location}}<br/>
+              &nbsp;&nbsp;{{{formatState value.state}}}<br/>
+              <br/>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{else}}
+        <div style="margin: auto; width: 100%;">No devices have been added</div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div id="edit-device" class="insp-right-form">
+    <div class="row">
+      <div class="insp-right-form-header">Edit Device</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        {{#with selectedDevice}}
+        <div class="question-text">
+          Type of Device<br/>
+          <div class="form-group float-right">
+            <select id="editemltype" name="editemltype" class="form-control">
+              {{#each getDeviceTypes}}
+                {{{optionType this}}}
+              {{/each}}
+            </select>
+          </div>
+          &nbsp;
+        </div>
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editemllocation" id="editemllocation" value="{{value.location}}" />
+          </div>
+          Location
+        </div>
+        <div class="question-text">
+          State of Device<br/>
+          <div class="form-group float-right">
+            <select class="form-control" name="editemlstate" id="editemlstate">
+              {{#each getDeviceStates}}
+                {{{optionState this}}}
+              {{/each}}
+            </select>
+          </div>
+          &nbsp;
+        </div>
+        {{/with}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary" id="editformbtn">Save</a>
+        <a href="#" class="btn btn-default" id="canceleditformbtn">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="add-deficiency" class="insp-right-form">
+    <div class="row">
+      <div class="insp-right-form-header">Deficiencies</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="comment-text">New Deficiency</label>
+            <div class="input-group" style="width: 90%;">
+              <textarea rows=6 style="width: 100%;" id="newformdeficiency" name="newformdeficiency"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary" id="adddeficiencybtn">Save</a>
+        <a href="#" class="btn btn-default" id="canceladddeficiencybtn">Cancel</a>
+      </div>
+    </div>
+
+    <div class="row" style="height: 50%; overflow-y: auto; margin-top: 20px;">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <ul class="list-group">
+        {{#each getFormDeficiencies}}
+          <li class="list-group-item">{{text}}</li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

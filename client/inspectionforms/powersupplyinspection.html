@@ -1,0 +1,69 @@
+<template name="powersupplyinspection">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Power Supply Inspection</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="psilocation" id="psilocation" value="{{getValue 'psilocation'}}" />
+        </div>
+        FA Panel/Control unit location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="psiidentification" id="psiidentification" value="{{getValue 'psiidentification'}}" />
+        </div>
+        FA Panel/Control unit identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'psifusedmarkedrating_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psifusedmarkedrating" id="psifusedmarkedrating_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'psifusedmarkedrating_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psifusedmarkedrating" id="psifusedmarkedrating_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'psifusedmarkedrating_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psifusedmarkedrating" id="psifusedmarkedrating_N/A"> N/A
+          </label>
+        </div>
+        A: Fused in accordance with the manufacturer’s marked rating of the system.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'psiadequate_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psiadequate" id="psiadequate_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'psiadequate_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psiadequate" id="psiadequate_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'psiadequate_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psiadequate" id="psiadequate_N/A"> N/A
+          </label>
+        </div>
+        B: Adequate to meet the requirements of the system.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'psiisolation_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psiisolation" id="psiisolation_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'psiisolation_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psiisolation" id="psiisolation_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'psiisolation_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="psiisolation" id="psiisolation_N/A"> N/A
+          </label>
+        </div>
+        C: Where power isolation modules are installed in a power distribution
+        riser serving field devices, wiring shall be shorted on the isolated
+        side, annunciation of the fault confirmed, and then a device on the
+        source side shall be operated, and activation confirmed at the control
+        unit or transponder.
+      </div>
+    </div>
+  </div>
+</template>

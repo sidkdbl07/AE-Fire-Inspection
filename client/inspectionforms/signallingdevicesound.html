@@ -1,0 +1,194 @@
+<template name="signallingdevicesound">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <div class="float-right">
+        Sort by:
+        <a href="#" class="btn {{#if isSortedBy 'device'}}btn-primary{{else}}btn-default{{/if}} sort" sortby="device">Device Type</a>
+        <a href="#" class="btn {{#if isSortedBy 'location'}}btn-primary{{else}}btn-default{{/if}} sort" sortby="location">Location</a>
+      </div>
+      <h2>Signalling Device Sound Level Measurements</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-heading">Add a Device</div>
+        </div>
+        <div class="panel-body">
+          <div class="question-text">
+            Type of Device<br/>
+            <div class="form-group float-right">
+              <select class="form-control" name="sdstype" id="sdstype">
+                {{#each getDeviceTypes}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
+            </div>
+            &nbsp;
+          </div>
+          <div class="question-text" style="display: none;">
+            <div class="form-group float-right" style="width: 50%;">
+              <input type="text" class="form-control textfield" name="sdstypeother" id="sdstypeother" />
+            </div>
+            Description
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 50%;">
+              <input type="text" class="form-control textfield" name="sdscct" id="sdscct" />
+            </div>
+            CCT Number
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 50%;">
+              <input type="text" class="form-control textfield" name="sdslocation" id="sdslocation" />
+            </div>
+            Location
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 15%;">
+              <input type="text" class="form-control textfield" name="sdsambient" id="sdsambient" />
+            </div>
+            Ambient dB
+          </div>
+          <div class="question-text" >
+            <div class="form-group float-right" style="width: 15%;">
+              <input type="text" class="form-control textfield" name="sdssignal" id="sdssignal" />
+            </div>
+            Signal dB
+          </div>
+        </div>
+        <div class="panel-footer" style="text-align: right;">
+          <a href="#" class="btn btn-primary" id="addfasdevice">Add</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7 col-xs-12">
+      {{#if isDevices}}
+      <div class="list-of-devices">
+        <ul class="list-group">
+          {{#each getDevices}}
+            <li class="list-group-item">
+              <div class="float-right" style="white-space: nowrap; text-align: right;">
+                <a href="#" class="btn btn-danger btn-xs deleteform" style="display: inline-block" formid="{{_id}}"><i class="fa fa-times"></i></a><br/>
+                <br/>
+                <a href="#" class="btn btn-default btn-xs deficienciesform" style="display: inline-block; margin-right: 10px; border: none;" formid="{{_id}}"><i class="fa fa-flag"></i>
+                  {{#if isDeficiencies _id}}<span class="badge">{{numDeficiencies _id}}</span>{{/if}}
+                </a>
+                <a href="#" class="btn btn-primary btn-xs editform" style="display: inline-block" formid="{{_id}}"><i class="fa fa-pencil"></i></a>
+              </div>
+              {{value.type}}{{value.typeother}} {{formatCCT value.cct}} {{value.location}}<br/>
+              Ambient: {{value.ambientdb}} dB&nbsp;&nbsp;&nbsp;&nbsp; Signal: {{value.signaldb}} dB<br/>
+              <br/>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{else}}
+        <div style="margin: auto; width: 100%;">No devices have been added</div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div id="edit-device" class="insp-right-form">
+    <div class="row">
+      <div class="insp-right-form-header">Edit Device</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        {{#with selectedDevice}}
+        <div class="question-text">
+          Type of Device<br/>
+          <div class="form-group float-right">
+            <select id="editsdstype" name="editsdstype" class="form-control">
+              {{#each getDeviceTypes}}
+                {{{optionType this}}}
+              {{/each}}
+            </select>
+          </div>
+          &nbsp;
+        </div>
+        {{#if isDeviceTypeOther}}
+        <div class="question-text">
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editsdstypeother" id="editsdstypeother" value="{{value.typeother}}"/>
+          </div>
+          Description
+        </div>
+        {{else}}
+        <div class="question-text" style="display: none;">
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editsdstypeother" id="editsdstypeother" value="{{value.typeother}}"/>
+          </div>
+          Description
+        </div>
+        {{/if}}
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editsdscct" id="editsdscct" value="{{value.cct}}" />
+          </div>
+          CCT Number
+        </div>
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 50%;">
+            <input type="text" class="form-control textfield" name="editsdslocation" id="editsdslocation" value="{{value.location}}" />
+          </div>
+          Location
+        </div>
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 15%;">
+            <input type="text" class="form-control textfield" name="editsdsambient" id="editsdsambient" value="{{value.ambientdb}}" />
+          </div>
+          Ambient dB
+        </div>
+        <div class="question-text" >
+          <div class="form-group float-right" style="width: 15%;">
+            <input type="text" class="form-control textfield" name="editsdssignal" id="editsdssignal" value="{{value.signaldb}}" />
+          </div>
+          Signal dB
+        </div>
+        {{/with}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary" id="editformbtn">Save</a>
+        <a href="#" class="btn btn-default" id="canceleditformbtn">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="add-deficiency" class="insp-right-form">
+    <div class="row">
+      <div class="insp-right-form-header">Deficiencies</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="comment-text">New Deficiency</label>
+            <div class="input-group" style="width: 90%;">
+              <textarea rows=6 style="width: 100%;" id="newformdeficiency" name="newformdeficiency"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+        <a href="#" class="btn btn-primary" id="adddeficiencybtn">Save</a>
+        <a href="#" class="btn btn-default" id="canceladddeficiencybtn">Cancel</a>
+      </div>
+    </div>
+
+    <div class="row" style="height: 50%; overflow-y: auto; margin-top: 20px;">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+        <ul class="list-group">
+        {{#each getFormDeficiencies}}
+          <li class="list-group-item">{{text}}</li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

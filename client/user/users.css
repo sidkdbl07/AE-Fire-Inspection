@@ -1,0 +1,32 @@
+.right-form {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 350px;
+  height: 100%;
+  background-color: #111;
+  transition: 0.5s;
+}
+
+.right-form:not(.show) {
+  right: -350px;
+}
+
+.right-form.show {
+  right: 0px;
+}
+
+.right-form-header {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  margin-left: 10px;
+  color: #C41230;
+  background-color: black;
+  font-size: 25px;
+}
+
+.user-controls {
+  height: 60px;
+  line-height: 60px;
+}

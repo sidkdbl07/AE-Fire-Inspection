@@ -1,0 +1,253 @@
+<template name="voicecommunicationtest">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Voice Communication Test</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctpoweron_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctpoweron" id="vctpoweron_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctpoweron_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctpoweron" id="vctpoweron_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctpoweron_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctpoweron" id="vctpoweron_N/A"> N/A
+          </label>
+        </div>
+        A: Power ‘ON’ indicator operates
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctvisualtrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctvisualtrouble" id="vctvisualtrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctvisualtrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctvisualtrouble" id="vctvisualtrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctvisualtrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctvisualtrouble" id="vctvisualtrouble_N/A"> N/A
+          </label>
+        </div>
+        B: Common visual trouble signal operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctaudibletrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctaudibletrouble" id="vctaudibletrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctaudibletrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctaudibletrouble" id="vctaudibletrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctaudibletrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctaudibletrouble" id="vctaudibletrouble_N/A"> N/A
+          </label>
+        </div>
+        C: Common audible trouble signal operates
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vcttroubleswitch_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vcttroubleswitch" id="vcttroubleswitch_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vcttroubleswitch_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vcttroubleswitch" id="vcttroubleswitch_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vcttroubleswitch_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vcttroubleswitch" id="vcttroubleswitch_N/A"> N/A
+          </label>
+        </div>
+        D: Trouble signal silence switch operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctallcall_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctallcall" id="vctallcall_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctallcall_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctallcall" id="vctallcall_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctallcall_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctallcall" id="vctallcall_N/A"> N/A
+          </label>
+        </div>
+        E: All-call voice paging, including visual indicator, operates
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctselectivevoicepaging_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctselectivevoicepaging" id="vctselectivevoicepaging_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctselectivevoicepaging_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctselectivevoicepaging" id="vctselectivevoicepaging_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctselectivevoicepaging_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctselectivevoicepaging" id="vctselectivevoicepaging_N/A"> N/A
+          </label>
+        </div>
+        F: Output circuits for selective voice paging, including visual indication, operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctoutputselectivetrouble_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctoutputselectivetrouble" id="vctoutputselectivetrouble_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctoutputselectivetrouble_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctoutputselectivetrouble" id="vctoutputselectivetrouble_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctoutputselectivetrouble_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctoutputselectivetrouble" id="vctoutputselectivetrouble_N/A"> N/A
+          </label>
+        </div>
+        G: Output circuits for selective voice paging trouble operation, including visual indication, operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctmicrophone_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctmicrophone" id="vctmicrophone_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctmicrophone_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctmicrophone" id="vctmicrophone_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctmicrophone_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctmicrophone" id="vctmicrophone_N/A"> N/A
+          </label>
+        </div>
+        H: Microphone, including press to talk switch, operates
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctoperationinterfereinitial_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctoperationinterfereinitial" id="vctoperationinterfereinitial_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctoperationinterfereinitial_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctoperationinterfereinitial" id="vctoperationinterfereinitial_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctoperationinterfereinitial_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctoperationinterfereinitial" id="vctoperationinterfereinitial_N/A"> N/A
+          </label>
+        </div>
+        I: Operation of voice paging does not interfere with initial inhibit time of alert signal or alarm signal.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctallcalemergencypower_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctallcalemergencypower" id="vctallcalemergencypower_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctallcalemergencypower_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctallcalemergencypower" id="vctallcalemergencypower_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctallcalemergencypower_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctallcalemergencypower" id="vctallcalemergencypower_N/A"> N/A
+          </label>
+        </div>
+        J: All-call voice paging operates (on emergency power supply).
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctbackupampstransfer_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctbackupampstransfer" id="vctbackupampstransfer_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctbackupampstransfer_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctbackupampstransfer" id="vctbackupampstransfer_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctbackupampstransfer_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctbackupampstransfer" id="vctbackupampstransfer_N/A"> N/A
+          </label>
+        </div>
+        K: Where systems use back-up amplifiers, the automatic transfer feature operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctcircuitsphonecallin_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitsphonecallin" id="vctcircuitsphonecallin_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctcircuitsphonecallin_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitsphonecallin" id="vctcircuitsphonecallin_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctcircuitsphonecallin_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitsphonecallin" id="vctcircuitsphonecallin_N/A"> N/A
+          </label>
+        </div>
+        L: Circuits for emergency telephone call-in operation, including audible and visual indication, operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctcircuitemergtelephonetwoway_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitemergtelephonetwoway" id="vctcircuitemergtelephonetwoway_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctcircuitemergtelephonetwoway_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitemergtelephonetwoway" id="vctcircuitemergtelephonetwoway_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctcircuitemergtelephonetwoway_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitemergtelephonetwoway" id="vctcircuitemergtelephonetwoway_N/A"> N/A
+          </label>
+        </div>
+        M: Circuits for emergency telephones for operation, including two-way voice communication, operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctcircuitemergtelephonevisual_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitemergtelephonevisual" id="vctcircuitemergtelephonevisual_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctcircuitemergtelephonevisual_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitemergtelephonevisual" id="vctcircuitemergtelephonevisual_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctcircuitemergtelephonevisual_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctcircuitemergtelephonevisual" id="vctcircuitemergtelephonevisual_N/A"> N/A
+          </label>
+        </div>
+        N: Circuits for emergency telephone trouble operation, including visual indication, operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctemergverbal_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctemergverbal" id="vctemergverbal_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctemergverbal_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctemergverbal" id="vctemergverbal_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctemergverbal_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctemergverbal" id="vctemergverbal_N/A"> N/A
+          </label>
+        </div>
+        O: Emergency telephone verbal communication operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctemerginusehandset_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctemerginusehandset" id="vctemerginusehandset_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctemerginusehandset_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctemerginusehandset" id="vctemerginusehandset_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctemerginusehandset_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctemerginusehandset" id="vctemerginusehandset_N/A"> N/A
+          </label>
+        </div>
+        P: Emergency telephone operable or in-use tone at handset operates.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'vctstandby_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctstandby" id="vctstandby_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'vctstandby_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctstandby" id="vctstandby_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'vctstandby_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="vctstandby" id="vctstandby_N/A"> N/A
+          </label>
+        </div>
+        Q: While in standby mode, voice communication busses used for paging, alert signal, alarm signal, and emergency telephone
+          communication circuits, an open circuit fault, or short circuit fault, or
+          operation of an overcurrent protective device provided for the
+          purpose, shall result in a specific trouble indication specific to the
+          faulty buss.
+      </div>
+    </div>
+  </div>
+</template>

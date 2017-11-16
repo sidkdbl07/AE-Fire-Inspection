@@ -1,0 +1,27 @@
+.data {
+  margin-bottom: 15px;
+}
+
+#generate-report-btn, #remove-inspection {
+  margin-right: 20px;
+}
+
+.inspection-observations {
+  position: absolute;
+  top: 0px;
+  right: 300px;
+  white-space: nowrap;
+  height: 50px;
+  line-height: 50px;
+}
+
+.inspection-control {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.list-of-tests {
+  height: 600px;
+  max-height: 600px;
+  overflow-y: scroll;
+}

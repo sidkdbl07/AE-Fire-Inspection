@@ -1,0 +1,185 @@
+<template name="inspection">
+  <div id="content" class="content">
+    {{> header}}
+    <a href="/inspection/items/{{inspection._id}}">
+      <div class="inspection-observations">
+        <div class="inspection-control"><i class="fa fa-lg fa-comment"></i> <span class="badge">{{numberOfComments}}</span></div>
+        <div class="inspection-control"><i class="fa fa-lg fa-flag"></i> <span class="badge">{{numberOfDeficiencies}}</span></div>
+        <div class="inspection-control"><i class="fa fa-lg fa-sticky-note"></i> <span class="badge">{{numberOfRecommendations}}</span></div>
+      </div>
+    </a>
+    <div class="page-content">
+      <a href="/"><i class="fa fa-arrow-left"></i> Back to Inspections</a><br/>
+      {{#if subsReady 'inspection'}}
+        {{#with inspection}}
+        <div style="white-space: no-wrap;">
+          <h1 style="display: inline-block;">{{building}}</h1>
+          <span style="display: inline-block; margin-left: 20px;">{{address}}, {{contact}}: {{contactnumber}}</span>
+        </div>
+        <div class="row">
+          <div class="col-sm-5 col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="text-align: right;">
+                {{#if isSid}}
+                <a href="#" class="btn btn-danger" id="remove-inspection"><i class="fa fa-times"></i></a>
+                {{/if}}
+                {{#if isWeb}}
+                <a href="/generate/pdf/{{_id}}" target="_blank" class="btn btn-default" id="generate-report-btn">Report PDF</a>
+                {{/if}}
+                <a href="#" class="btn btn-default" id="edit-inspection-btn"><i class="fa fa-pencil"></i></a>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <label>Inspector</label>
+                    <div class="data">{{author}}</div>
+                    <label>Inspection Number</label>
+                    <div class="data">{{number}}</div>
+                    <label>Status</label>
+                    <div class="data">{{status}}</div>
+                  </div>
+                  <div class="col-xs-6">
+                    <label>Date</label>
+                    <div class="data">{{formattedDate inspectiondate}}</div>
+                    <label>Purchase Order</label>
+                    <div class="data">{{po}}</div>
+                  </div>
+                </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-xs-6">
+                    <label>Manufacturer</label>
+                    <div class="data">{{manufacturer}}</div>
+                    <label>Model</label>
+                    <div class="data">{{model}}</div>
+                  </div>
+                  <div class="col-xs-6">
+                    <label>Operation</label>
+                    <div class="data">{{operation}}</div>
+                    <label>Circuit</label>
+                    <div class="data">{{circuit}}</div>
+                    <label>Wiring</label>
+                    <div class="data">{{wire}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-7 col-xs-12">
+            <div class="list-of-tests">
+              <div class="list-group">
+                {{#each tests}}
+                <a href="{{formatRoute form}}" class="list-group-item {{#if isComplete}}lightgreenbg{{/if}} {{#if isNA}}lightredbg{{/if}}">
+                  {{#if trackrecords}}<span class="badge">{{count}}</span>{{/if}}
+                  <i class="fa fa-{{icon status}}"></i> &nbsp;{{name}}
+                </a>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+        {{> snackbar}}
+        <div id="edit-inspection" class="insp-right-form">
+          <div class="row">
+            <div class="insp-right-form-header">Edit Inspection</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5">
+              <label for="inspection-date">Date</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-date" value="{{formformattedDate inspectiondate}}" />
+              </div>
+              <label for="inspection-author">Inspector</label>
+              <div class="input-group">
+                <select class="form-control" id="inspection-author" >
+                  {{#each getUsers}}
+                  <option value="{{_id}}" {{isAuthor _id}}>{{profile.firstname}} {{profile.lastname}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <label for="inspection-number">Inspection Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-number" value="{{number}}" />
+              </div>
+              <label for="inspection-po">Purchase Order</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-po" value="{{po}}"/>
+              </div>
+              <label for="inspection-status">Status</label>
+              <div class="input-group">
+                <select class="form-control" id="inspection-status">
+                  <option value="In Progress" {{isStatus 'In Progress'}}>In Progress</option>
+                  <option value="In Review" {{isStatus 'In Review'}}>In Review</option>
+                  <option value="Complete" {{isStatus 'Complete'}}>Complete</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-5 col-xs-offset-1">
+              <label for="inspection-building">Building</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-building" value="{{building}}" />
+              </div>
+              <label for="inspection-address">Building Address</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-address" value="{{address}}"/>
+              </div>
+              <label for="inspection-contact">Building Contact</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-contact" value="{{contact}}"/>
+              </div>
+              <label for="inspection-contact-number">Building Contact Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-contact-number" value="{{contactnumber}}" />
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 30px;">
+            <div class="col-xs-5">
+              <label for="inspection-manufacturer">Fire Alarm System Manufacturer</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-manufacturer" value="{{manufacturer}}"/>
+              </div>
+              <label for="inspection-model">Model Number</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inspection-model" value="{{model}}"/>
+              </div>
+            </div>
+            <div class="col-xs-5 col-xs-offset-1">
+              <label for="inspection-operation">Operation</label>
+              <div class="input-group">
+                <select class="form-control" id="inspection-operation">
+                  <option value="Single Stage" {{isOperation 'Single Stage'}}>Single Stage</option>
+                  <option value="Two Stage" {{isOperation 'Two Stage'}}>Two Stage</option>
+                </select>
+              </div>
+              <label for="inspection-circuit">Circuit Type</label>
+              <div class="input-group">
+                <select class="form-control" id="inspection-circuit">
+                  <option value="Addressable" {{isCircuit 'Addressable'}}>Addressable</option>
+                  <option value="Conventional" {{isCircuit 'Conventional'}}>Conventional</option>
+                  <option value="120 Volt" {{isCircuit '120 Volt'}}>120 Volt</option>
+                </select>
+              </div>
+              <label for="inspection-wire">Wire Type</label>
+              <div class="input-group">
+                <select class="form-control" id="inspection-wire">
+                  <option value="3-Wire" {{isWire '3-Wire'}}>3-Wire</option>
+                  <option value="5-Wire" {{isWire '5-Wire'}}>5-Wire</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12" style="text-align: center; margin-top: 20px;">
+              <a href="#" class="btn btn-primary" id="editinspection">Save</a>
+              <a href="#" class="btn btn-default" id="editinspectioncancel">Cancel</a>
+            </div>
+          </div>
+        </div>
+        {{/with}}
+      {{else}}
+        {{>loading}}
+      {{/if}}
+    </div>
+  </div>
+</template>

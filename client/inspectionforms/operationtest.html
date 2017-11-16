@@ -1,0 +1,108 @@
+<template name="operationtest">
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1 col-xs-12">
+      <h2>Operation Test for Data Communication Link</h2>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-9 col-sm-offset-2 col-xs-12">
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="otlocation" id="otlocation" value="{{getValue 'otlocation'}}" />
+        </div>
+        Control unit or transponder location:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="otidentification" id="otidentification" value="{{getValue 'otidentification'}}" />
+        </div>
+        Control unit or transponder identification:
+      </div>
+      <div class="question-text">
+        <div class="float-right">
+            <input type="text" class="textfield" style="width: 400px;" name="otlinkidentification" id="otlinkidentification" value="{{getValue 'otlinkidentification'}}" />
+        </div>
+        Data communication link identification:
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'otconfirmtroublesignal_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otconfirmtroublesignal" id="otconfirmtroublesignal_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'otconfirmtroublesignal_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otconfirmtroublesignal" id="otconfirmtroublesignal_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'otconfirmtroublesignal_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otconfirmtroublesignal" id="otconfirmtroublesignal_N/A"> N/A
+          </label>
+        </div>
+        A: Confirm that a trouble signal is received at the control unit or
+        transponder under an open loop fault.
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'otfaultisolation_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otfaultisolation" id="otfaultisolation_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'otfaultisolation_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otfaultisolation" id="otfaultisolation_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'otfaultisolation_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otfaultisolation" id="otfaultisolation_N/A"> N/A
+          </label>
+        </div>
+        B: Where fault isolation modules are installed in data communication
+        links serving field devices, wiring shall be shorted on the isolated
+        side, annunciation of the fault confirmed, and then a field device on
+        the source side shall be operated, and activation confirmed at the
+        control unit or transponder.
+      </div>
+      <div class="question-text">
+        C: Where fault isolation in data communication links is provided between
+        control units or transponders and between transponders, introduce a
+        short circuit fault and confirm annunciation of the fault and operation
+        outside the shorted section between each pair of:<br/>
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'otcontroltocontrol_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otcontroltocontrol" id="otcontroltocontrol_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'otcontroltocontrol_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otcontroltocontrol" id="otcontroltocontrol_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'otcontroltocontrol_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otcontroltocontrol" id="otcontroltocontrol_N/A"> N/A
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(i) Control unit to control unit
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'otcontroltotransponder_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otcontroltotransponder" id="otcontroltotransponder_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'otcontroltotransponder_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otcontroltotransponder" id="otcontroltotransponder_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'otcontroltotransponder_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="otcontroltotransponder" id="otcontroltotransponder_N/A"> N/A
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(ii) Control unit to transponder
+      </div>
+      <div class="question-text">
+        <div class="btn-group float-right" data-toggle="buttons">
+          <label class="btn {{#if isSelected 'ottranspondertotransponder_Yes'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ottranspondertotransponder" id="ottranspondertotransponder_Yes"> Yes
+          </label>
+          <label class="btn {{#if isSelected 'ottranspondertotransponder_No'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ottranspondertotransponder" id="ottranspondertotransponder_No"> No
+          </label>
+          <label class="btn {{#if isSelected 'ottranspondertotransponder_N/A'}}btn-primary{{else}}btn-default{{/if}}">
+            <input type="radio" class="radiobutton" name="ottranspondertotransponder" id="ottranspondertotransponder_N/A"> N/A
+          </label>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;(iii) Transponder to transponder
+      </div>
+    </div>
+  </div>
+</template>
